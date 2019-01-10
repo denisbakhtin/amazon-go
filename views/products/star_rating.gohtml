@@ -1,0 +1,11 @@
+{{define "products/star_rating"}}
+	<div class="editorial-rating" title="Editorial rating">
+		{{range .RatingSlice}}
+			{{if .}}
+				<span class="star fa fa-star"></span>
+			{{else}}
+				<span class="star far fa-star"></span>
+			{{end}}
+		{{end}}
+	</div>
+{{end}}

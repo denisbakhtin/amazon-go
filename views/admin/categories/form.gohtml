@@ -1,0 +1,37 @@
+{{define "admin/categories/form"}}
+  <input type="hidden" name="_csrf" value="{{.Csrf}}">
+  <fieldset>
+    <div class="form-group">
+      <label for="inputTitle" class="control-label">Title</label>
+      <input type="text" class="form-control" id="inputTitle" placeholder="Title" name="title" value="{{.Category.Title}}" />
+    </div>
+
+    <div class="form-group">
+      <label for="selectParent" class="control-label">Parent</label>
+      <select class="form-control" id="selectParent" name="parent_id">
+        <option value="">-</option>
+        {{$parentID := .Category.ParentID}}
+        {{range .TopLevelCategories}}
+          {{if EqIDParentID .ID $parentID}}
+            <option selected="selected" value="{{.ID}}">{{.Title}}</option>
+          {{else}}
+            <option value="{{.ID}}">{{.Title}}</option>
+          {{end}}
+        {{end}}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="ck-content" class="control-label">Description</label>
+      <textarea id="ck-content" placeholder="Description" name="description" value="{{.Category.Description}}"></textarea>
+    </div>
+      
+    <div class="form-group form-actions">
+      <a class="btn btn-default" href="/admin/categories">Back to list</a>
+      <input type="submit" name="submit" class="btn btn-success" value="{{SubmitAndBackTitle}}" />
+      <input type="submit" name="submit" class="btn btn-primary" value="{{SubmitAndViewTitle}}" />
+    </div>
+  </fieldset>
+  <script src="/vendor/ckeditor.js"></script>
+  <script type="text/javascript">window.csrf_token="{{.Csrf}}";</script>
+{{end}}

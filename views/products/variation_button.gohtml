@@ -1,0 +1,9 @@
+{{define "products/variation_button"}}
+	<div class="variation-dimension" id="{{.ID}}">
+		<p>{{.Title}}:</p>
+		{{range .Value}}
+			<div class="variation-button btn btn-info btn-sm" data-value="{{.}}">{{.}}</div>
+		{{end}}
+		<div class="clearfix"></div>
+	</div>
+{{end}}

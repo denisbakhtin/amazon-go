@@ -1,0 +1,10 @@
+{{define "admin/browse_nodes/tree-children"}}
+    <ul>    
+      {{range .Children}}
+        <li>
+          {{template "admin/browse_nodes/tree-item" .}}
+          {{template "admin/browse_nodes/tree-children" .}}
+        </li>
+      {{end}}
+    </ul>
+{{end}}

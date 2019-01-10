@@ -1,0 +1,9 @@
+User-Agent: *
+Disallow: /search
+Disallow: /my_account
+Disallow: /cart_items
+Disallow: /categories/71-new-arrivals
+Disallow: /*?order=
+
+Sitemap: http://savelikea.pro/system/sitemap.xml.gz
+Host: savelikea.pro

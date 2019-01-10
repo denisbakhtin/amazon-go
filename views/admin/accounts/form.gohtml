@@ -1,0 +1,43 @@
+{{define "admin/accounts/form"}}
+  <fieldset>
+    <input type="hidden" name="_csrf" value="{{.Csrf}}">
+    <div class="form-group">
+      <label class="control-label">First Name</label>
+      <input type="text" class="form-control" placeholder="First name" name="first_name" value="{{.Account.FirstName}}" />
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">Last Name</label>
+      <input type="text" class="form-control" placeholder="Last name" name="last_name" value="{{.Account.LastName}}" />
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">Email</label>
+      <input type="email" class="form-control" placeholder="Email" name="email" value="{{.Account.Email}}" />
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">Role</label>
+      <select name="role" class="form-control">
+        {{range AccountRoles}}
+          <option value="{{.Code}}" {{if eq .Code $.Account.Role}}selected{{end}}>{{.Title}}</option>
+        {{end}}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">Password</label>
+      <input type="password" class="form-control" placeholder="Password" name="password" value="{{.Account.Password}}" />
+    </div>
+    <div class="form-group">
+      <label class="control-label">Password Confirm</label>
+      <input type="password" class="form-control" placeholder="Password confirm" name="password_confirm" value="{{.Account.PasswordConfirm}}" />
+    </div>
+
+    <div class="form-group form-actions">
+      <input type="submit" class="btn btn-success" value="Submit" />
+      <a class="btn btn-default" href="/admin/accounts">Back to list</a>
+    </div>
+  </fieldset>
+  <script type="text/javascript">window.csrf_token="{{$.Csrf}}";</script>
+{{end}}

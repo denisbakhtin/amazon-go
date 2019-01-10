@@ -1,0 +1,11 @@
+{{define "sidebar_price"}}
+    <div class="sidebar-price my-4 mx-2">
+        <h5>Price</h5>
+        {{range PriceRanges}}
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="price" id="price_{{.Code}}" value="{{.Code}}">
+                <label class="form-check-label" for="price_{{.Code}}">{{.Title}}</label>
+            </div>
+        {{end}}
+    </div>
+{{end}}

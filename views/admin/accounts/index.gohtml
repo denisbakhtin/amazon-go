@@ -1,0 +1,46 @@
+{{define "admin/accounts/index"}}
+  {{template "admin/page_top" .}}
+
+  {{template "admin/sidebar" .}}
+  <div class="content">
+    <h1>{{.Title}}</h1>
+    <div class="mb-3">
+      <a class="btn btn-primary" href="/admin/new_account">New Account</a>
+    </div>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th class="shrink">ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th class="shrink">Role</th>
+          <th class="shrink">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{range .Accounts}}
+          <tr>
+            <td class="shrink">{{.ID}}</td>
+            <td>{{.FirstName}}</td>
+            <td>{{.LastName}}</td>
+            <td class="shrink">{{.Role}}</td>
+            <td class="shrink">
+              <a class="btn btn-sm btn-primary" href="/admin/edit_account/{{.ID}}">Edit</a>
+              <form class="d-inline" action="/admin/delete_account/{{.ID}}" method="POST">
+                <input type="hidden" name="_csrf" value="{{$.Csrf}}">
+                <button class="btn btn-sm btn-danger" type="submit" value="Delete">Delete</button>
+              </form>
+            </td>
+          </td>
+        {{end}}
+      </tbody>
+    </table>
+
+    <div class="">
+      <a class="btn btn-primary" href="/admin/new_account">New Account</a>
+    </div>
+  </div>
+
+  {{template "admin/page_bottom" .}}
+{{end}}

@@ -1,0 +1,21 @@
+{{define "breadcrumbs"}}
+	<div class="hidden-xs mt-3">
+		<ol class="breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+			<li class="home">
+				<a href="/" itemprop="url">
+					<span itemprop="title">Home</span>
+				</a>
+				<span class="fa fa-xs fa-chevron-right ml-1 mr-1 text-muted"></span>
+			</li>
+			{{range .Breadcrumbs}}
+				<li>
+					<a href="{{.URL}}" itemprop="url">
+						<span itemprop="title">{{.Title}}</span>
+					</a>
+					<span class="fa fa-xs fa-chevron-right ml-1 mr-1 text-muted"></span>
+				</li>
+			{{end}}
+			<li class="active">{{Truncate .Title 30}}</li>
+		</ol>
+	</div>
+{{end}}

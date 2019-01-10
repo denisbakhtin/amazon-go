@@ -1,0 +1,11 @@
+{{define "sidebar_discount"}}
+    <div class="sidebar-discount my-4 mx-2">
+        <h5>Discount</h5>
+        {{range DiscountRanges}}
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="discount" id="discount_{{.Code}}" value="{{.Code}}">
+                <label class="form-check-label" for="discount_{{.Code}}">{{.Title}}</label>
+            </div>
+        {{end}}
+    </div>
+{{end}}

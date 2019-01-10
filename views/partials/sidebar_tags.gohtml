@@ -1,0 +1,12 @@
+{{define "sidebar_tags"}}
+    {{if .SidebarTags}}
+        <h4>Tags</h4>
+        <div id="sidebar-tag-wrapper">
+            <ul class="nav nav-pills nav-stacked" id="sidebar-tag">
+                {{range .SidebarTags}}
+                    {{template "sidebar_scale_item" .}}
+                {{end}}
+            </ul>
+        </div>
+    {{end}}
+{{end}}

@@ -1,0 +1,37 @@
+{{define "categories/show"}}
+  {{template "page_top" .}}
+  {{template "breadcrumbs" .}}
+
+  <div class="category-view">
+    <h1>{{.Category.Title}}</h1>
+
+    <div class="row product-list">
+      {{range $index, $value := .Category.Products}}
+        {{template "products/preview" .}}
+      {{end}}
+    </div>
+    <div class="clearfix"></div>
+
+    {{$sidebarCategories := SidebarCategories}}
+    {{if $sidebarCategories}}
+      <h4 class="text-center strong text-success">To view all products select one of the departments</h4>
+      <div class="row text-center">
+        {{if $sidebarCategories}}
+          <ul class="nav nav-pills" id="department-body-list">
+            {{range $sidebarCategories}}
+              {{template "sidebar_scale_item" .}}
+            {{end}}
+          </ul>
+        {{end}}
+      </div>
+    {{end}}
+
+    {{template "pagination" .}}
+
+    <h2>{{.Category.Title}} clearance</h2>
+    <div class="category-description">{{.GetDescription}}</div>
+  </div>
+
+  {{template "breadcrumbs" .}}
+  {{template "page_bottom" .}}
+{{end}}

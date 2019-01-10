@@ -1,0 +1,30 @@
+{{define "products/product_images"}}
+	<div id="current-image-box" class="card d-flex justify-content-center align-items-center" data-img-src="{{.MainImage}}">
+		<img src="{{.MainImage}}" alt="{{.MainImageTitle}}" itemprop="image" />
+	</div>
+	<div class="more-views d-flex">
+		{{if .ID}}
+			{{if len .ImageSlice | lt 0}}
+				{{range .ImageSlice}}
+					<div class="image-panel card mr-2 mt-2 d-flex align-items-center justify-content-center">
+						<div class="product-image-preview">
+							<img src="{{.}}" title="Click to View" />
+						</div>
+					</div>
+				{{end}}
+			{{end}}
+		{{end}}
+	</div>
+	<script>
+		//switch images in product view
+		$('.product-essential .more-views .image-panel:first').addClass('active');
+		$('.product-essential .more-views').on('click', '.image-panel', function () {
+			$('.product-essential .more-views .image-panel').removeClass('active');
+			$(this).addClass('active');
+			var img = $(this).find("img");
+			$(".product-essential #current-image-box > img").fadeOut(400, function () {
+			$('.product-essential #current-image-box > img').attr("src", img.attr("src"));
+			}).fadeIn(400);
+		});
+	</script>
+{{end}}

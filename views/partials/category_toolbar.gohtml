@@ -1,0 +1,14 @@
+{{define "category_toolbar"}}
+	<div class="title">
+		<h1>{{.Title}}</h1>
+		{{if .Order}}
+			<div class="order-wrapper text-right">
+				<span>Sort by:</span>
+				{{$url := .BaseURL}}
+				{{range .Order}}
+					<a href="{{$url}}?order={{.ID}}" class={{.Class}}>{{.Title}}</a>
+				{{end}}
+			</div>
+		{{end}}
+	</div>
+{{end}}

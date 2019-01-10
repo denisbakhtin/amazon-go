@@ -1,0 +1,12 @@
+{{define "sidebar_categories"}}
+    {{if .SidebarCategories}}
+        <h4>Departments</h4>
+        <div id="sidebar-category-wrapper">
+            <ul class="nav nav-pills nav-stacked" id="sidebar-category">
+                {{range .SidebarCategories}}
+                    {{template "sidebar_scale_item" .}}
+                {{end}}
+            </ul>
+        </div>
+    {{end}}
+{{end}}

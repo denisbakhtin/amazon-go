@@ -1,0 +1,63 @@
+{{define "admin/asins/queued_index"}}
+  {{template "admin/page_top" .}}
+
+  {{template "admin/sidebar" .}}
+  <div class="content">
+    <h1>{{.Title}}</h1>
+    <div class="mb-3">
+      <a class="btn btn-primary mr-2" href="/admin/new_queued_asin">New Queued Asin</a>
+      <form class="d-inline mr-2" action="/admin/queue_asins" method="POST">
+        <input type="hidden" name="_csrf" value="{{$.Csrf}}">
+        <button class="btn btn-success" type="submit">Queue Available Products</button>
+      </form>
+      <form class="d-inline" action="/admin/clear_queued_asins" method="POST">
+        <input type="hidden" name="_csrf" value="{{$.Csrf}}">
+        <button class="btn btn-danger" type="submit">Clear Queue</button>
+      </form>
+    </div>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th class="shrink">ID</th>
+          <th class="shrink">Asin</th>
+          <th>Feed</th>
+          <th class="shrink">Priority</th>
+          <th class="shrink">Created At</th>
+          <th class="shrink">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{range .Asins}}
+          <tr>
+            <td class="shrink">{{.ID}}</td>
+            <td class="shrink">{{.Asin}}</td>
+            <td><a href="{{.Feed.GetURL}}">{{.Feed.Title}}</a></td>
+            <td class="shrink">{{.Priority}}</td>
+            <td class="shrink">{{FormatDateTime .CreatedAt}}</td>
+            <td class="shrink">
+              <form class="d-inline" action="/admin/delete_queued_asin/{{.ID}}" method="POST">
+                <input type="hidden" name="_csrf" value="{{$.Csrf}}">
+                <button class="btn btn-sm btn-danger" type="submit" value="Delete">Delete</button>
+              </form>
+            </td>
+          </td>
+        {{end}}
+      </tbody>
+    </table>
+
+    <div class="">
+      <a class="btn btn-primary mr-2" href="/admin/new_queued_asin">New Queued Asin</a>
+      <form class="d-inline mr-2" action="/admin/queue_asins" method="POST">
+        <input type="hidden" name="_csrf" value="{{$.Csrf}}">
+        <button class="btn btn-success" type="submit">Queue Available Products</button>
+      </form>
+      <form class="d-inline" action="/admin/clear_queued_asins" method="POST">
+        <input type="hidden" name="_csrf" value="{{$.Csrf}}">
+        <button class="btn btn-danger" type="submit" value="Delete">Clear Queue</button>
+      </form>
+    </div>
+  </div>
+
+  {{template "admin/page_bottom" .}}
+{{end}}

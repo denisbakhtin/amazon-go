@@ -1,0 +1,11 @@
+{{define "pages/show"}}
+	{{template "page_top" .}}
+	{{template "breadcrumbs" .}}
+
+	<div class="page-title"><h1>{{.Title}}</h1></div>
+
+	<div class="page-view">{{.Page.GetBody}}</div>
+
+	{{template "breadcrumbs" .}}
+	{{template "page_bottom" .}}
+{{end}}

@@ -1,0 +1,16 @@
+{{define "admin/pages/new"}}
+  {{template "admin/page_top" .}}
+
+  {{template "admin/sidebar" .}}
+  <div class="content">
+    <div class="title"><h1>{{.Title}}</h1></div>
+
+    {{template "flash" .}}
+
+    <form method="POST">
+      {{template "admin/pages/form" .}}
+    </form>
+  </div>
+
+  {{template "admin/page_bottom" .}}
+{{end}}

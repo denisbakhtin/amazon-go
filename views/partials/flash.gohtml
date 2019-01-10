@@ -1,0 +1,10 @@
+{{define "flash"}}
+	{{if .Flash}}
+		<div class="alert alert-dismissable alert-danger">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			{{range .Flash}}
+				<div>{{.}}</div>
+			{{end}}
+		</div>
+	{{end}}
+{{end}}

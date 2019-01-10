@@ -1,0 +1,11 @@
+{{define "admin/browse_nodes/show"}}
+  {{template "admin/page_top" .}}
+
+  {{template "admin/sidebar" .}}
+  <div class="content">
+    <h1>{{.Title}}</h1>
+    <h4>Products</h4>
+    {{template "admin/products/table" .BrowseNode.Products}}
+  </div>
+  {{template "admin/page_bottom" .}}
+{{end}}

@@ -1,0 +1,20 @@
+{{define "admin/specifications/queued_form"}}
+  <fieldset>
+    <input type="hidden" name="_csrf" value="{{.Csrf}}">
+    <div class="form-group">
+      <label class="control-label">Product ID</label>
+      <input type="text" class="form-control" placeholder="Product ID" name="product_id" value="{{.Specification.ProductID}}" />
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">Priority</label>
+      <input type="number" class="form-control" placeholder="Priority" name="priority" value="{{.Specification.Priority}}" />
+    </div>
+
+    <div class="form-group form-actions">
+      <input type="submit" class="btn btn-success" value="Submit" />
+      <a class="btn btn-default" href="/admin/queued_specifications">Back to list</a>
+    </div>
+  </fieldset>
+  <script type="text/javascript">window.csrf_token="{{$.Csrf}}";</script>
+{{end}}

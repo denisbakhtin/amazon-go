@@ -1,0 +1,16 @@
+{{define "sidebar"}}
+<aside class="sidebar-content">
+    {{if .CategoryMenu}}
+        {{template "sidebar_categories" .}}
+    {{else}}
+        {{template "sidebar_onsale" .}}
+        {{template "sidebar_price" .}}
+        <hr />
+        {{template "sidebar_discount" .}}
+        <hr />
+        {{template "sidebar_shipping" .}}
+        {{template "sidebar_categories" .}}
+        {{template "sidebar_tags" .}}
+    {{end}}
+</aside>
+{{end}}

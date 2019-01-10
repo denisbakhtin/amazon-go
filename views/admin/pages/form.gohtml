@@ -1,0 +1,41 @@
+{{define "admin/pages/form"}}
+  <fieldset>
+    <input type="hidden" name="_csrf" value="{{.Csrf}}">
+    <div class="form-group">
+      <label for="inputTitle" class="control-label">Title</label>
+      <input type="text" class="form-control" id="inputTitle" placeholder="Title" name="title" value="{{.Page.Title}}" />
+    </div>
+
+    <div class="form-group">
+      <label for="inputMetaKeywords" class="control-label">Meta Keywords</label>
+      <input type="text" class="form-control" id="inputMetaKeywords" placeholder="Meta keywords" name="meta_keywords" value="{{.Page.MetaKeywords}}" />
+    </div>
+
+    <div class="form-group">
+      <label for="inputMetaDescription" class="control-label">Meta Description</label>
+      <input type="text" class="form-control" id="inputMetaDescription" placeholder="Meta description" name="meta_description" value="{{.Page.MetaDescription}}" />
+    </div>
+
+    <div class="form-group">
+      <label for="ck-content" class="control-label">Body</label>
+      <textarea id="ck-content" placeholder="Page body" name="body">{{.Page.Body}}</textarea>
+    </div>
+
+    <div class="form-group">
+      {{if .Page.Show}}
+        <input type="checkbox" class="checkbox" id="inputShow" name="show" value="true" checked="checked" />
+      {{else}}
+        <input type="checkbox" class="checkbox" id="inputShow" name="show" value="true" />
+      {{end}}
+      <label for="inputShow" class="control-label">Show</label>
+    </div>
+      
+    <div class="form-group form-actions">
+      <a class="btn btn-default" href="/admin/pages">Back to list</a>
+      <input type="submit" name="submit" class="btn btn-success" value="{{SubmitAndBackTitle}}" />
+      <input type="submit" name="submit" class="btn btn-primary" value="{{SubmitAndViewTitle}}" />
+    </div>
+  </fieldset>
+  <script src="/vendor/ckeditor.js"></script>
+  <script type="text/javascript">window.csrf_token="{{$.Csrf}}";</script>
+{{end}}

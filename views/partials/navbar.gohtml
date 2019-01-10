@@ -1,0 +1,45 @@
+{{define "navbar"}}
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="visible-md visible-lg navbar-brand" href="/" title="Premium discount webservice">
+        <img src="/images/logo.png" alt="Save like a pro logo" />
+        <span>Save like a</span>
+        <span class="text-success">PRO</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarColor02">
+        <form action="/search" method="GET" class="form-inline my-2 my-lg-0">
+          <div class="form-group" style="display:inline">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">
+                  <span id="category_search_title">All Categories</span>
+                  <span class="caret"></span>
+                </button>
+                <div class="dropdown-menu" id="category_search_list" role="menu">
+                  {{range SearchDepartments}}
+                    <a href="#" class="dropdown-item" data-search-id="{{.ID}}">{{.Title}}</a>
+                  {{end}}
+                </div>
+              </div>
+              <input type="search" name="query" id="search-input" class="form-control" required="required" placeholder="Search web store" value="{{.SearchString}}" />
+              <input type="hidden" name="category_id" id="category_search_id" value="" />
+
+              <div class="input-group-append"> 
+                <button class="btn btn-success" type="submit">Go</button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <ul class="navbar-nav pl-2 ml-auto navbar-right-wrapper">
+          {{template "navbar_account" .}}
+          {{template "navbar_cart" .}}
+        </ul>
+      </div>
+    </div><!-- container-fluid -->
+  </nav> 
+{{end}}

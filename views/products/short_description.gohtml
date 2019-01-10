@@ -1,0 +1,21 @@
+{{define "products/short_description"}}
+  <div itemprop="description">
+    <h4>Product features</h4>
+    <div id="features">
+      <ul>
+        {{range .FeatureSlice}}
+          <li>{{.}}</li>
+        {{end}}
+      </ul>
+    </div>
+  </div>
+  <ul>
+    <li>Condition: 
+      <link itemprop="itemCondition" href="http://schema.org/NewCondition">
+      <span class="strong"> NEW!</span>
+    </li>
+    {{if .ID}}
+      <li>In Stock.</li>
+    {{end}}
+  </ul>
+{{end}}

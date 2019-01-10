@@ -1,0 +1,27 @@
+{{define "products/variations_table"}}
+  {{$priceColumns := .Product.PriceColumns}}
+  <div id="variations">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          {{range $priceColumns}}
+            <th class="{{.ID}}" data-key="{{.ID}}">{{.Title}}</th>
+          {{end}}
+        </tr>
+      </thead>
+      <tbody>
+        {{range .Product.PriceData}}
+          <tr>
+            {{$row := .}}
+            {{range $priceColumns}}
+              <td class="{{.ID}}">{{GetPriceData .ID $row}}</td>
+            {{end}}
+          </tr>
+        {{end}}
+      </tbody>
+    </table>
+    {{if len .Product.Variations | lt 1}}
+      <p class="variations-note text-warning">* Click on the row to view details</p>
+    {{end}}
+  </div>
+{{end}}

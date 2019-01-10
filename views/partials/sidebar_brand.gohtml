@@ -1,0 +1,12 @@
+{{define "sidebar_brand"}}
+  {{if .BrandScale}}
+    <h4>Brands</h4>
+    <div id="sidebar-brand-wrapper">
+      <ul class="nav nav-pills nav-stacked" id="sidebar-brand">
+        {{range .BrandScale}}
+          {{template "sidebar_scale_item" .}}
+        {{end}}
+      </ul>
+    </div>
+  {{end}}
+{{end}}

@@ -1,0 +1,55 @@
+{{define "tags/show"}}
+  {{template "page_top" .}}
+  {{template "breadcrumbs" .Tag}}
+
+  <div class="tag-view">
+    {{if .Sidebar}}
+      <div class="sidebar">
+        {{template "sidebar" .}}
+      </div>
+      <div class="content-wrapper">
+    {{end}}
+    
+    <h1>{{.Tag.Title}}</h1>
+    <div class="row product-list">
+      {{range $index, $value := .Tag.Products}}
+        {{template "products/preview" .}}
+      {{end}}
+    </div>
+    <div class="clearfix"></div>
+
+    {{template "pagination" .}}
+
+    {{if len .Tag.SimilarProducts | lt 0}}
+      <h3>Other {{.Tag.TopParent.Title}} You May Be Interested In</h3>
+      <div class="row product-list">
+        {{range $index, $value := .Tag.SimilarProducts}}
+          {{template "products/preview" .}}
+        {{end}}
+      </div>
+      <div class="clearfix"></div>
+    {{end}}
+
+    {{$sidebarCategories := SidebarCategories}}
+    {{if $sidebarCategories}}
+      <h4 class="text-center strong text-success">To view all products select one of the departments</h4>
+      <div class="row text-center">
+        {{if $sidebarCategories}}
+          <ul class="nav nav-pills" id="department-body-list">
+            {{range $sidebarCategories}}
+              {{template "sidebar_scale_item" .}}
+            {{end}}
+          </ul>
+        {{end}}
+      </div>
+    {{end}}
+
+    {{if .Sidebar}}
+      </div><!-- .content-wrapper -->
+    {{end}}
+    <div class="clearfix"></div>
+  </div>
+
+  {{template "breadcrumbs" .Tag}}
+  {{template "page_bottom" .}}
+{{end}}

@@ -1,0 +1,17 @@
+{{define "navbar_account"}}
+	{{if .Authenticated}}
+		<li class="nav-item dropdown" id="navbar-account">
+			<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+				<span>{{.Account.Email}}</span>
+			</a>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" href="/admin">Dashboard</a>
+				<a class="dropdown-item" href="/signout">Sign out</a>
+			</div>
+		</li>
+	{{else}}
+		<li class="nav-item">
+			<a class="nav-link" href="/signin">Sign in</a>
+		</li>
+	{{end}}
+{{end}}

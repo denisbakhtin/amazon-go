@@ -1,0 +1,24 @@
+{{define "search/show"}}
+  {{template "page_top" .}}
+
+  <div class="tag-view">
+    <div class="title"><h1>{{.Title}}</h1></div>
+
+    <div class="row product-list">
+      {{if len .Products | lt 0}}
+        {{range $index, $value := .Products}}
+          {{template "products/preview" .}}
+        {{end}}
+      {{else}}
+        <p>No available products satisfy your search request, please try again.</p>
+      {{end}}
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="pagination-wrapper">
+      {{template "pagination" .}}
+    </div>
+  </div>
+  {{template "page_bottom" .}}
+{{end}}

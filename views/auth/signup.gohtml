@@ -1,0 +1,37 @@
+{{define "auth/signup"}}
+	{{template "page_top" .}}
+  	{{template "breadcrumbs" .}}
+
+	<div class="container signup-view">
+		<div class="card auth-card">
+			<div class="card-body">
+				<form method="post" data-parsley-validate>
+					<h4 class="card-title">Sign Up / <a href="/signin">Sign In</a></h4>
+					{{range .Flash}}
+            <div class="alert alert-danger">{{.}}</div><p>
+					{{end}}
+					<input type="hidden" name="_csrf" value="{{.Csrf}}">
+					
+					<div class="form-group">
+            <label class="control-label" for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="Email address" class="form-control input-md" required="" data-parsley-required-message="Please enter your email">
+					</div>
+
+					<div class="form-group">
+            <label class="control-label" for="password">Password</label>
+            <input id="password" name="password" type="password" placeholder="Password" class="form-control input-md" required="" data-parsley-required-message="Please enter your password">
+					</div>
+
+          <div class="form-group">
+            <label class="control-label" for="password-confirm">Confirm password</label>
+            <input id="password-confirm" name="password_confirmation" type="password" placeholder="Repeat your password" class="form-control input-md" required="" data-parsley-required-message="Please repeat your password" data-parsley-equalto="#password" data-parsley-equalto-message="Passwords do not match">
+          </div>
+
+					<button id="signup" name="signup" class="btn btn-primary">Sign Up</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	{{template "breadcrumbs" .}}
+	{{template "page_bottom" .}}
+{{end}}

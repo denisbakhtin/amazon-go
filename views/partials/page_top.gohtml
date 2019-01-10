@@ -1,0 +1,46 @@
+{{define "page_top"}}
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      {{if .Title}}
+        <title>{{.Title}}</title>
+      {{else}}
+        <title>{{SiteTitle}}</title>
+      {{end}}
+      {{if .MetaDescription}}
+        <meta name="description" content="{{.MetaDescription}}">
+      {{end}}
+      {{if .MetaKeywords}}
+        <meta name="keywords" content="{{.MetaKeywords}}">
+      {{end}}
+      <meta name="google-site-verification" content="848-18pWS7A18JMVzuHFK22SraH8k6y7QE9PeJiQkmE">
+      <link rel="stylesheet" href="/assets/main.css">
+      <script src="/assets/application.js"></script> 
+
+      {{template "favicon" .}}
+    </head>
+
+    <body class="{{.BodyClass}}">
+      {{template "navbar" .}}
+
+      {{if .HomeTopProducts}}
+        <div class="home-top-products-wrapper">
+          <div class="home-top-products">
+            {{range .HomeTopProducts}}<a class="home-product" href="{{.GetURL}}"><img src="{{.MainImage}}" class="img-fluid" /><div class="description"><div class="p-2">{{.Title}} <span class="strong">{{printf "$%.2f" .SpecialPrice}}</span></div></div></a>{{end}}
+          </div>
+          <div class="home-top-products-title">
+              <div class="description">
+                <p class="total-products">{{TotalProducts}}</p>
+                <h1>Great Deals</h1>
+                <p class="sub-title">Discount is Your Right</p>
+              </div>
+            </div>
+        </div>
+      {{end}}
+      
+      <div class="container-fluid body-content {{.Controller}}">
+        <!-- main content -->
+{{end}}

@@ -1,0 +1,61 @@
+{{define "products/offer_details"}}  
+  <div class="card card-body border-transparent flex-row align-items-center mb-3" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+    {{if .ID}}
+      <div class="price-info mr-2 flex-grow-1" data-toggle="tooltip" data-price-date="{{.UpdatedAt}}">
+        {{if gt .RegularPrice .SpecialPrice}}
+          <span class="special-price mr-2">
+            <span class="text-muted price-label">Special price: </span>
+            <span class="text-dark price" itemprop="price">{{printf "$%.2f" .SpecialPrice}}</span>
+            <meta itemprop="priceCurrency" content="USD">
+          </span>
+          <span class="regular-price mr-2">
+            <span class="text-muted price-label">Regular price: </span>
+            <span class="text-danger price">{{printf "$%.2f" .RegularPrice}}</span>
+          </span>
+          <span class="discount mr-2">
+            <span class="text-muted price-label">You save: </span>
+            <span class="text-info discountpercent">{{printf "$%.2f" .Discount}}</span>
+          </span>
+        {{else}}
+          {{if eq .RegularPrice 0.0}}
+            <span class="special-price mr-2">
+              <span class="text-muted price-label">Special price: </span>
+              <span class="text-dark price" itemprop="price">{{printf "$%.2f" .SpecialPrice}}</span>
+              <meta itemprop="priceCurrency" content="USD">
+            </span>
+          {{else}}
+            <span class="special-price no-discount">
+              <span class="price-label text-muted">Regular price: </span>
+              <span class="price" itemprop="price">{{printf "$%.2f" .RegularPrice}}</span>
+              <meta itemprop="priceCurrency" content="USD">
+            </span>
+            <span class="discount">&nbsp;</span>
+          {{end}}
+        {{end}}
+        {{if .FreeShipping}}
+	        <div class="product-attributes">
+	          <a href="{{SuperSaverURL}}" target="_blank" class="strong">
+	            <span class="fa fa-check text-success fa-lg"></span> FREE Shipping.
+						</a>
+            <span class="text-muted">{{.Attributes}}</span>
+					</div>
+	      {{end}}
+      </div>
+
+      <div class="cart-button" id="add-to-cart">
+        <form action="/cart/add/{{.ID}}" method="POST" remote="true">
+          <input type="submit" value="Add to Cart" class="button btn btn-success" rel="nofollow" />
+        </form>
+      </div>
+
+      <link itemprop="availability" href="http://schema.org/InStock">
+    {{else}}
+      <span class="text-danger">
+        <link itemprop="availability" href="http://schema.org/OutOfStock">
+        Sold
+      </span>
+    {{end}}
+  </div>
+  
+  <div class="clearfix"></div>
+{{end}}

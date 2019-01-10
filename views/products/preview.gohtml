@@ -1,0 +1,28 @@
+{{define "products/preview"}}
+  <div class="product-preview col-6 col-sm-4 col-md-3 mb-2">
+    <a href="{{.GetURL}}" class="d-block" title="{{.Title}}">
+      <div class="img-div" style="background-image:url('{{.MainImage}}')"></div>
+      
+      <div class="description">
+        <h2 class="title text-truncate">{{.TitleWithoutBrand}}</h2>
+        <p class="brand text-truncate">{{.Brand.Title}}</p>
+        <div class="category-and-tag text-truncate">
+          {{if gt .Category.ID 0}}
+            #{{.Category.Title}}
+          {{end}}
+          {{if gt .BrowseNode.ID 0}}
+            #{{.BrowseNode.Title}}
+          {{end}}
+        </div>
+        <p class="prices text-dark d-flex">
+          {{if gt .DiscountPercent 0.5}}
+            <span class="font-weight-bold d-inline-block mr-auto">{{printf "$%.2f" .SpecialPrice}}</span>
+            <span class="strike-through d-inline-block ml-2">{{printf "$%.2f" .RegularPrice}}</span>
+          {{else}}
+            <span class="font-weight-bold d-inline-block mr-2">{{printf "$%.2f" .RegularPrice}}</span>
+          {{end}}
+        </p>
+      </div>
+    </a>
+  </div>
+{{end}}

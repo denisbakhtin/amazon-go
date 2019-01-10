@@ -1,0 +1,12 @@
+{{define "admin/browse_nodes/tree-item"}}
+  <div class="card card-body">
+    <div>
+      <a href="/admin/browse_node/{{.ID}}">
+        <span class="id text-muted">{{.ID}}</span>
+        <span class="title">{{.Title}}</span>
+        <span class="product_count text-muted">{{.OwnProductCount}}</span>
+        <span class="product_count text-muted">{{.ProductCount}}</span>
+      </a>
+    </div>
+  </div>
+{{end}}

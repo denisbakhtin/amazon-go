@@ -1,0 +1,27 @@
+{{define "admin/products/new"}}
+	{{template "page_top" .}}
+	<div id="container">
+		<h1>New product form</h1>
+		<form action="/products" method="POST" class="form-horizontal">
+			<div class="form-group">
+				<label for="Title" class="col-lg-2 control-label">Title</label>
+				<div class="col-lg-10">
+					<input type="text" name="Title" class="form-control" placeholder="Title" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="Description" class="col-lg-2 control-label">Description</label>
+				<div class="col-lg-10">
+					<textarea name="Description" class="form-control" placeholder="Enter product description"></textarea>
+				</div>
+			</div>
+			<div class="form-group actions">
+				<div class="col-lg-10 col-lg-offset-2">
+					<a href="/products" class="btn btn-default">Cancel</a>
+					<input type="submit" class="btn btn-primary" value="Save" />
+				</div>
+			</div>
+		</form>
+	</div>
+	{{template "page_bottom" .}}
+{{end}}

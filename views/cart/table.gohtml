@@ -1,0 +1,74 @@
+{{define "cart/table"}}
+    <div class="cart-view">
+		{{if len .Cart.CartItems | lt 0}}
+			<table class="cart-view table table-striped">
+				<thead>
+					<tr>
+						<th class="image"></th>
+						<th class="title">Product Name</th>
+						<th class="price">Unit Price</th>
+						<th class="quantity">Qty</th>
+						<th class="sum">Subtotal</th>
+						<th class="delete"></th>
+					</tr>
+				</thead>
+				<tbody>
+					{{range .Cart.CartItems}}
+						<tr>
+							<td class="image"><a href="{{.URL}}"><img src="{{.Image}}" /></a></td>
+							<td class="title"><a href="{{.URL}}">{{.Title}}</a></td>
+							<td class="price">{{.Price}}</td>
+							<td class="quantity">
+								<form action="/cart/update" method="POST">
+									<input type="number" name="quantity" value="{{.Quantity}}" onchange="this.form.submit();" title="Update quantity" />
+									<input type="hidden" name="asin" value="{{.Asin}}" />
+								</form>
+							</td>
+							<td class="sum">{{.SubTotal}}</td>
+							<td class="delete">
+								<form action="/cart/update" method="POST">
+									<input type="hidden" name="quantity" value="0" />
+									<input type="hidden" name="asin" value="{{.Asin}}" />
+									<button class="btn btn-default btn-sm" type="submit" title="Remove item"><span class="fa fa-times"></span></button>
+								</form>
+							</td>
+						</tr>
+					{{end}}
+				</tbody>
+				<tfoot>
+					<tr>
+						<td class="image"></td>
+						<td class="title">Total</td>
+						<td class="price"></td>
+						<td class="quantity"></td>
+						<td class="sum">{{.Cart.SubTotal}}</td>
+						<td class="delete"></td>
+					</tr>
+				</tfoot>
+			</table>
+
+			<div class="actions">
+				<a href="/cart/checkout" class="btn btn-success mr-2" onclick="this.form.submit();" id="checkout-btn">
+					<span class="fa fa-check"></span>
+					Check out
+				</a>
+				<a href="#" class="btn btn-info mr-2" id="refresh-btn" onclick="location.reload();return false;">
+					<span class="fa fa-sync"></span>
+					Refresh
+				</a>
+			</div>
+		{{else}}
+			<div class="actions">
+				<p>Your cart is empty.</p>
+				<a href="/" class="btn btn-primary mr-2" id="home-btn">
+					<span class="fa fa-shopping-cart"></span>
+					Continue shopping
+				</a>
+				<a href="#" class="btn btn-info" id="refresh-btn" onclick="location.reload(); return false;">
+					<span class="fa fa-sync"></span>
+					Refresh
+				</a>
+			</div>
+		{{end}}
+	</div>
+{{end}}

@@ -1,0 +1,15 @@
+{{define "errors/404"}}
+  {{template "page_top" .}}
+  
+  <div class="error-page">
+    <h1 class="text-center">
+      <i class="far fa-frown"></i> <br/>
+      404 Error <br/>
+    </h1>
+    <h3 class="text-center">Page not found</h3>
+    <p class="text-center">The page you are looking for doesn't exist or an other error occurred. <br/>
+    Go back, or head over to <a href="/">Home page</a> to choose a new direction.</p>
+  </div>
+
+  {{template "page_bottom" .}}
+{{end}}

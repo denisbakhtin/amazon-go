@@ -1,0 +1,8 @@
+public/product_images/*
+public/system/*
+tmp/*
+app
+node_modules/*
+deploy
+aws/*
+config/*

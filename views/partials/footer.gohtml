@@ -1,0 +1,83 @@
+{{define "footer"}}
+  <footer class="page-footer text-center">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-6 col-md-3">
+          <ul>
+            <li>
+              <a href="{{AboutURL}}" rel="nofollow">
+                <span>About web-site</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ContactsURL}}" rel="nofollow">
+                <span>Contacts</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{PaymentMethodsURL}}" rel="nofollow">
+                <span>Payment methods</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+
+        <div class="col-xs-6 col-md-3">
+          <ul>
+            <li>
+              <a href="{{WeAreSorryURL}}">
+                <span>My account</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{WeAreSorryURL}}">
+                <span>My subscriptions</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{WeAreSorryURL}}">
+                <span>My wishlist</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{WeAreSorryURL}}">
+                <span>Log in</span>
+              </a>
+            </li>
+        </div>
+
+        <div class="col-xs-6 col-md-3">
+          <ul>
+            <li>
+              <a href="{{PrivacyPolicyURL}}">
+                <span>Privacy Policy</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{AgreementURL}}">
+                <span>Disclosure</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{DisclaimerURL}}">
+                <span>Amazon affiliate disclaimer</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-xs-6 col-md-3">
+          © {{Now.Year}} All Rights Reserved - {{SiteName}}.
+          <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-55662012-1', 'auto');
+            ga('send', 'pageview');
+          </script>
+        </div>
+      </div>
+    </div>
+  </footer>
+{{end}}

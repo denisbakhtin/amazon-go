@@ -1,0 +1,28 @@
+{{define "admin/browse_nodes/index"}}
+  {{template "admin/page_top" .}}
+
+  {{template "admin/sidebar" .}}
+  <div class="content tree-view">
+    <h1>{{.Title}}</h1>
+
+    <div class="card card-body mb-4">
+      <form method="GET" class="form-inline">
+        <div class="form-group">
+          <input type="checkbox" name="only_top" value="1" id="only_top" {{if .OnlyTop}}checked{{end}} />
+          <label for="only_top" class="ml-2 mr-4">Only top level nodes</label>
+        </div>
+        <input type="submit" class="btn btn-primary btn-sm" value="Filter" />
+      </form>
+    </div>
+
+    <ul>
+      {{range .BrowseNodes}}
+        <li>
+          {{template "admin/browse_nodes/tree-item" .}}
+          {{template "admin/browse_nodes/tree-children" .}}
+        </li>
+      {{end}}
+    </ul>
+  </div>
+  {{template "admin/page_bottom" .}}
+{{end}}

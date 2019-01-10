@@ -1,0 +1,17 @@
+{{define "products/variations_select"}}
+  {{$dims := .Product.SelectableDims}}
+  {{range $index, $dim := $dims}}
+    {{$uniqueValues := $.Product.UniquePriceColumnData .IDStr $.Product.PriceData}}
+    <div class="form-group d-inline-block mr-2">
+      <label class="dimension-label">{{.GetTitle}}</label>
+      <select id="dim-{{$index}}-select" data-id="{{$index}}" class="form-control w-auto dimension-select">
+        {{range $uniqueValues}}
+          <option value="{{.}}">{{.}}</option>
+        {{end}}
+      </select>
+    </div>
+  {{end}}
+  <script>
+    document.dims = eval({{.Product.DimValuesJS $dims}});
+  </script>
+{{end}}

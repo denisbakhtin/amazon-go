@@ -1,0 +1,40 @@
+{{define "home/slider"}}
+  <div class="index_block hidden-xs">
+    <div id="carousel-home" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        {{range $index, $element := .ProductSlides}}
+          <div class="item {{if eq $index 0}}active{{end}}">
+            <img src="{{.MainImage}}" />
+            <div class="carousel-caption">
+              <a href="{{.GetURL}}" class="shop_now">
+                <h3>{{.Title}}</h3>
+                {{$variation := .PromoVariation}}
+                <div class="price-info">
+                  <span class="regular-price">
+                    <span class="text-muted price-label">Regular price: </span>
+                    <span class="text-danger price">$ {{$variation.RegularPrice}}</span>
+                  </span>
+                  <span class="special-price">
+                    <span class="text-muted price-label">Special price: </span>
+                    <span class="text-success price">$ {{$variation.SpecialPrice}}</span>
+                  </span>
+                  <span class="discount">
+                    <span class="text-muted price-label">Discount: </span>
+                    <span class="text-info discountpercent">-{{$variation.DiscountPercent}}%</span>
+                  </span>
+                </div>
+              </a>
+            </div>
+          </div>
+        {{end}}
+      </div>
+
+      <a class="left carousel-control" href="#carousel-home" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="right carousel-control" href="#carousel-home" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+    </div>
+  </div>
+{{end}}

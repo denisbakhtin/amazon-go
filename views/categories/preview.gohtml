@@ -1,0 +1,15 @@
+{{define "categories/preview"}}
+  <div class="tag-preview card">
+    <div class="tag-heading panel-heading">
+      <a class="tag-button btn btn-default" href={{.GetURL}} title="Browse {{.ProductCount}} {{.Title}}">
+        {{.Title}}
+        <span class="badge">{{.ProductCount}}</span>
+      </a>
+    </div>
+    <div class="panel-body">
+      {{range $index, $value := .Products}}
+        {{template "products/preview" .}}
+      {{end}}
+    </div>
+  </div>
+{{end}}

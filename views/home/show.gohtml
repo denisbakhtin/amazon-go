@@ -1,0 +1,32 @@
+{{define "home/show"}}
+  {{template "page_top" .}}
+  
+  {{$count := len .Nodes}}
+  {{range $index, $node := .Nodes}}
+    <div class="tag-preview-wrapper mb-4" data-product-preview-bgcolor="{{GenerateColor $index $count 0.08}}" data-tag-preview-bgcolor="{{GenerateColor $index $count 0.12}}">
+      <h2 class="text-center mb-4"><a href="{{.GetURL}}" class="text-dark text-underline text-hover-normal">{{.Title}}</a></h2>
+      <div class="row">
+        {{range .Products}}
+          {{template "products/preview" .}}
+        {{end}}
+      </div>
+      {{$children := .GetThreeChildren}}
+      {{if len $children | lt 0}}
+        <div class="tag-previews row mt-2">
+          {{range $children}}
+            <div class="tag-preview col-4 mb-2">
+              <a href="{{.GetURL}}" class="d-block" title="{{.Title}}">
+                <div class="img-div" style="background-image:url('{{.MainImage}}')"></div>
+                <div class="description">
+                  <h3 class="title text-truncate">{{.Title}}</h3>
+                </div>
+              </a>
+            </div>
+          {{end}}
+        </div>
+      {{end}}
+    </div>
+  {{end}}
+
+  {{template "page_bottom" .}}
+{{end}}

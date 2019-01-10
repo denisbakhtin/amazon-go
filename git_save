@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "Building application"
+
+echo -n "What's commit name? "
+read commit
+
+git add -u
+git add .
+git commit -m "$commit"
+git push origin master

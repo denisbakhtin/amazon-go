@@ -1,0 +1,28 @@
+{{define "admin/products/table"}}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th class="shrink">ID</th>
+                <th class="shrink">Image</th>
+                <th>Title</th>
+                <th class="shrink">Available</th>
+                <th class="shrink">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{range .}}
+                <tr>
+                    <td class="shrink">{{.ID}}</td>
+                    <td class="shrink"><img src="{{.MainImage}}" class="img-fluid" /></td>
+                    <td>{{.Title}}</td>
+                    <td class="shrink">
+                        {{if .Available}}<i class="fas fa-check"></i>{{end}}
+                    </td>
+                    <td class="shrink">
+                        <a class="btn btn-sm btn-info" href="{{.GetURL}}">Show</a>
+                    </td>
+                </tr>
+            {{end}}
+        </tbody>
+    </table>
+{{end}}
