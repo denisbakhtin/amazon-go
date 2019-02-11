@@ -1,6 +1,6 @@
-package viewmodels
+package models
 
-//SearchDepartment stores info about search department )
+//SearchDepartment is a view model that represents search scope
 type SearchDepartment struct {
 	ID    uint64 //browse_node id atm
 	Title string

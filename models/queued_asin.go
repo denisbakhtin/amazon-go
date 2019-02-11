@@ -8,3 +8,8 @@ type QueuedAsin struct {
 	Priority int64   `form:"priority"` //dont know why it is not float64, but let it be
 	Feed     Feed    `form:"-" gorm:"association_autoupdate:false;association_autocreate:false"`
 }
+
+//QueuedProductID is a view model that represents info about queued product id
+type QueuedProductID struct {
+	ProductID uint64 `form:"product_id" binding:"required"`
+}

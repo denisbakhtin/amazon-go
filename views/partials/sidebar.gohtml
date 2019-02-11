@@ -1,16 +1,24 @@
 {{define "sidebar"}}
 <aside class="sidebar-content">
-    {{if .CategoryMenu}}
-        {{template "sidebar_categories" .}}
-    {{else}}
+    <form class="sidebar-filter-form" method="GET" action="{{.Context.Request.URL.Path}}">
         {{template "sidebar_onsale" .}}
         {{template "sidebar_price" .}}
         <hr />
         {{template "sidebar_discount" .}}
         <hr />
         {{template "sidebar_shipping" .}}
-        {{template "sidebar_categories" .}}
-        {{template "sidebar_tags" .}}
-    {{end}}
+        {{if .SidebarBrands}}
+            <hr />
+            {{template "sidebar_brand" .}}
+        {{end}}
+        {{if .SidebarTags}}
+            {{if len .SidebarTags | lt 1}}
+                <hr />
+                {{template "sidebar_tags" .}}
+            {{end}}
+        {{end}}
+        <hr />
+        {{template "sidebar_reset" .}}
+    </form>
 </aside>
 {{end}}

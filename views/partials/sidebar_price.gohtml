@@ -3,7 +3,7 @@
         <h5>Price</h5>
         {{range PriceRanges}}
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="price" id="price_{{.Code}}" value="{{.Code}}">
+                <input class="form-check-input" type="radio" name="price" id="price_{{.Code}}" value="{{.Code}}" {{if $.Context.Query "price" | eq .Code}}checked{{end}} onchange="this.form.submit();">
                 <label class="form-check-label" for="price_{{.Code}}">{{.Title}}</label>
             </div>
         {{end}}

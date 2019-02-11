@@ -1,8 +1,6 @@
 package models
 
 import (
-	//"database/sql"
-
 	"sync"
 	"time"
 
@@ -47,30 +45,23 @@ type Model struct {
 	DeletedAt *time.Time `binding:"-" form:"-"`
 }
 
-//Scale stores info about scale
-type Scale struct {
-	Title string
-	URL   string
-	Class string
-}
-
 //InitDatabase initializes db handler
 func InitDatabase() {
 	var err error
 
-	DB, err = gorm.Open("postgres", config.ConnectionString)
+	DB, err = gorm.Open("postgres", config.DBConnectionString)
 
 	if err != nil {
 		panic(err.Error())
 	}
 
 	if config.IsDebug() {
-		DB.LogMode(true)
+		//DB.LogMode(true)
 	}
 	if err := DB.AutoMigrate(&Account{}, &Brand{}, &BrowseNode{}, &Category{}, &Company{}, &Dimension{}, &Feed{},
-		&Language{}, &Menu{}, &Operation{}, &Page{}, &Pattern{}, &ProcessedAsin{}, &ProcessedSpecification{},
+		&Language{}, &Menu{}, &Operation{}, &Page{}, &ProcessedAsin{}, &ProcessedSpecification{},
 		&ProductGroupType{}, &ProductGroup{}, &ProductTranslation{}, &ProductType{}, &Product{}, &QueuedAsin{}, &QueuedSpecification{},
-		&QueuedTranslation{}, &Specification{}, &SyncLog{}, &TranslationRequest{}, &Variation{}, &Watch{}).Error; err != nil {
+		&QueuedTranslation{}, &Specification{}, &SyncLog{}, &TranslationRequest{}, &Variation{}, &Watch{}, &Binding{}, &Department{}, &ItemAttributes{}).Error; err != nil {
 		panic(err)
 	}
 	seedDB()
@@ -141,11 +132,11 @@ func seedDB() {
 	if count == 0 {
 		account := Account{
 			Model:     Model{ID: config.AdminID},
-			Email:     "denis.bakhtin@gmail.com",
+			Email:     config.AdminEmail,
 			FirstName: "Denis",
 			LastName:  "Bakhtin",
 			Role:      config.AdminRole,
-			Password:  "IvntisuAm!98!",
+			Password:  config.AdminPassword,
 		}
 		if err := DB.Create(&account).Error; err != nil {
 			panic(err)

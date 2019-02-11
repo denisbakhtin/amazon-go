@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"math"
 	"regexp"
-	"strconv"
 	"strings"
 
 	"github.com/denisbakhtin/amazon-go/config"
@@ -39,11 +38,7 @@ func SearchGet(c *gin.Context) {
 	searchTerms := strings.Split(query, " ")
 
 	//page number
-	currentPage := 1
-	if pageStr := c.Query("page"); pageStr != "" {
-		currentPage, _ = strconv.Atoi(pageStr)
-	}
-	currentPage = int(math.Max(float64(1), float64(currentPage)))
+	currentPage := utility.CurrentPage(c)
 
 	//postgresql full text search
 	dbQuery := models.DB.Where("available = true AND to_tsvector('english', title) @@ to_tsquery('english', ?)", strings.Join(searchTerms, " & "))
@@ -64,10 +59,15 @@ func SearchGet(c *gin.Context) {
 		Offset((currentPage - 1) * config.PerPage).
 		Find(&products) //order by rating + apply pagination
 
+	//add browse nodes to search result
+	var nodes []models.BrowseNode
+	models.DB.Where("product_count > 0 AND to_tsvector('english', title) @@ to_tsquery('english', ?)", strings.Join(searchTerms, " & ")).Find(&nodes)
+
 	H := DefaultH(c)
 	H["Products"] = products
+	H["Nodes"] = nodes
 	H["Pagination"] = utility.Paginator(currentPage, totalPages, c.Request.URL)
 	H["SearchString"] = strings.Join(searchTerms, " ")
-	H["Title"] = fmt.Sprintf("%s - search results", strings.Join(searchTerms, " "))
+	H["Title"] = fmt.Sprintf("%q search results", strings.Join(searchTerms, " "))
 	c.HTML(200, "search/show", H)
 }

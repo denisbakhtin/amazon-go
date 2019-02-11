@@ -3,7 +3,7 @@
     <input type="hidden" name="_csrf" value="{{.Csrf}}">
     <div class="form-group">
       <label class="control-label">Asin</label>
-      <input type="text" class="form-control" placeholder="Asin" name="asin" value="{{.Asin.Asin}}" />
+      <input type="text" class="form-control" placeholder="Asin" name="asin" value="{{.Asin.Asin}}" autofocus />
     </div>
 
     <div class="form-group">
@@ -16,5 +16,4 @@
       <a class="btn btn-default" href="/admin/queued_asins">Back to list</a>
     </div>
   </fieldset>
-  <script type="text/javascript">window.csrf_token="{{$.Csrf}}";</script>
 {{end}}

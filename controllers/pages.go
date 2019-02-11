@@ -8,7 +8,6 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"github.com/denisbakhtin/amazon-go/models"
-	"github.com/denisbakhtin/amazon-go/viewmodels"
 )
 
 //PageGet processes GET /pages/1/slug
@@ -62,25 +61,17 @@ func PagesNewGet(c *gin.Context) {
 
 //PagesNewPost processes create page request
 func PagesNewPost(c *gin.Context) {
-	vm := viewmodels.Page{}
-	if err := c.ShouldBind(&vm); err != nil {
+	page := models.Page{}
+	if err := c.ShouldBind(&page); err != nil {
 		sessionErrorAndRedirect(c, err, "/admin/new_page")
 		return
-	}
-
-	page := models.Page{
-		Title:           vm.Title,
-		MetaKeywords:    vm.MetaKeywords,
-		MetaDescription: vm.MetaDescription,
-		Body:            vm.Body,
-		Show:            vm.Show,
 	}
 
 	if err := models.DB.Create(&page).Error; err != nil {
 		sessionErrorAndRedirect(c, err, "/admin/new_page")
 		return
 	}
-	if vm.Submit == submitAndViewTitle() {
+	if page.Submit == submitAndViewTitle() {
 		c.Redirect(http.StatusSeeOther, page.GetURL())
 		return
 	}
@@ -122,7 +113,7 @@ func PagesEditPost(c *gin.Context) {
 		return
 	}
 
-	vm := viewmodels.Page{}
+	vm := models.Page{}
 	if err := c.ShouldBind(&vm); err != nil {
 		sessionErrorAndRedirect(c, err, fmt.Sprintf("/admin/edit_page/%d", page.ID))
 		return

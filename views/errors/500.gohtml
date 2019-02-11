@@ -1,15 +1,17 @@
 {{define "errors/500"}}
   {{template "page_top" .}}
   
-  <h1 class="text-center">
-    <i class="far fa-meh"></i> <br/>
-    500 Error <br/>
-  </h1>
-  <h3 class="text-center">Internal server error</h3>
-  <p class="text-center">Please try again later or contact us if the problem persists. <br/>
-  You can go back, or head over to <a href="/">Home page</a> to choose a new direction.</p>
+  <div class="error-page">
+    <h1 class="text-center">
+      <i class="far fa-frown"></i> <br/>
+      500 Error <br/>
+    </h1>
+    <h3 class="text-center">Internal server error</h3>
+    <p class="text-center">Please try again later or contact us if the problem persists. <br/>
+    You can go back, or head over to <a href="/">Home page</a> to choose a new direction.</p>
 
-  <p class="text-center text-danger">{{.Error}}</p>
+    <p class="text-center text-danger">{{.Error}}</p>
+  </div>
 
   {{template "page_bottom" .}}
 {{end}}

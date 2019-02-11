@@ -4,12 +4,10 @@ import (
 	"fmt"
 	"math"
 	"net/http"
-	"strconv"
 
 	"github.com/denisbakhtin/amazon-go/config"
 	"github.com/denisbakhtin/amazon-go/models"
 	"github.com/denisbakhtin/amazon-go/utility"
-	"github.com/denisbakhtin/amazon-go/viewmodels"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 )
@@ -36,19 +34,16 @@ func CategoryGet(c *gin.Context) {
 	categoryIDs := category.GetCategoryIDs()
 
 	totalCount := 0
-	models.DB.Model(models.Product{}).Where("category_id IN(?) AND available = true", categoryIDs).Count(&totalCount)
+	dbQuery := models.DB.Model(models.Product{}).Where("category_id IN(?) AND available = true", categoryIDs)
+	dbQuery = applyProductFilters(c, dbQuery)
+	dbQuery.Count(&totalCount)
 	totalPages := int(math.Ceil(float64(totalCount) / float64(config.PerPage)))
 
 	//page number
-	currentPage := 1
-	if pageStr := c.Query("page"); pageStr != "" {
-		currentPage, _ = strconv.Atoi(pageStr)
-	}
-	currentPage = int(math.Max(float64(1), float64(currentPage)))
+	currentPage := utility.CurrentPage(c)
 
-	models.DB.
+	dbQuery.
 		Preload("BrowseNode").
-		Where("category_id IN(?) AND available = true", categoryIDs).
 		Order("rate desc, discount_percent desc, id desc").
 		Limit(config.PerPage).
 		Offset((currentPage - 1) * config.PerPage).
@@ -100,21 +95,17 @@ func CategoriesNewGet(c *gin.Context) {
 
 //CategoriesNewPost processes create category request
 func CategoriesNewPost(c *gin.Context) {
-	vm := viewmodels.Category{}
-	if err := c.ShouldBind(&vm); err != nil {
+	category := models.Category{}
+	if err := c.ShouldBind(&category); err != nil {
 		sessionErrorAndRedirect(c, err, "/admin/new_category")
 		return
-	}
-	category := models.Category{Title: vm.Title, Description: vm.Description}
-	if vm.ParentID > 0 {
-		category.ParentID = &vm.ParentID
 	}
 
 	if err := models.DB.Create(&category).Error; err != nil {
 		sessionErrorAndRedirect(c, err, "/admin/new_category")
 		return
 	}
-	if vm.Submit == submitAndViewTitle() {
+	if category.Submit == submitAndViewTitle() {
 		c.Redirect(http.StatusSeeOther, category.GetURL())
 		return
 	}
@@ -162,17 +153,12 @@ func CategoriesEditPost(c *gin.Context) {
 		return
 	}
 
-	vm := viewmodels.Category{}
+	vm := models.Category{}
 	if err := c.ShouldBind(&vm); err != nil {
 		sessionErrorAndRedirect(c, err, fmt.Sprintf("/admin/edit_category/%d", category.ID))
 		return
 	}
-	category.Title, category.Description = vm.Title, vm.Description
-	if vm.ParentID > 0 {
-		category.ParentID = &vm.ParentID
-	} else {
-		category.ParentID = nil
-	}
+	category.Title, category.Description, category.ParentID = vm.Title, vm.Description, vm.ParentID
 
 	if err := models.DB.Save(&category).Error; err != nil {
 		session := sessions.Default(c)

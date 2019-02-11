@@ -4,6 +4,7 @@ import (
 	"log"
 
 	"github.com/denisbakhtin/amazon-go/aws"
+	"github.com/denisbakhtin/amazon-go/cache"
 	"github.com/denisbakhtin/amazon-go/config"
 	"github.com/denisbakhtin/amazon-go/controllers"
 	"github.com/denisbakhtin/amazon-go/models"
@@ -13,12 +14,14 @@ import (
 
 func main() {
 	//------------------------- initialization ---------------------------
-	config.InitConfig()
+	config.Init()
 	defer config.DisposeLogger()
+	cache.Init()
 	controllers.InitRoutes()
 	models.InitDatabase() //default settings will be used
 
 	//------------------------- service tasks ---------------------------
+	//go aws.DealsParse()
 	//go aws.RssParse()
 	//go aws.FeedParse()
 	go func() {
@@ -38,14 +41,15 @@ func main() {
 				log.Println(err)
 			}
 		}) //every day
+		c.AddFunc("23 50 0 * * *", func() { aws.MaintainDB() })                 //every day at 23:50
 		c.AddFunc("0 2 0 * * *", func() { aws.ClearProcessedAsins() })          //every day at 00:02
 		c.AddFunc("0 3 0 * * *", func() { aws.ClearProcessedSpecifications() }) //every day at 00:03 //obsolete
 		c.AddFunc("0 5 0 * * *", func() { aws.QueueAvailableAsins() })          //every day at 00:05
 		c.AddFunc("0 7 0 * * *", func() { models.InitializeCache() })           //every day at 00:07
 		c.AddFunc("0 10 0 4 * *", func() { aws.QueueUnavailableAsins() })       //every 4 days at 00:10
 		c.Start()
-		//if config.IsDebug() {
-		//launch update tasks in goroutines
+
+		//launch tasks in at the start of application in release mode
 		go models.InitializeCache()
 		go aws.RssParse()
 		go aws.FeedParse()

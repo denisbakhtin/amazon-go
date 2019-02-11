@@ -77,22 +77,22 @@ func Create() error {
 
 	baseURL := config.SiteURL
 	items := make([]item, 0, 100000)
-	var categories []models.Category
-	models.DB.Where("id != ?", config.NewArrivalsID).Find(&categories)
-	for i := range categories {
-		items = append(items, item{Loc: baseURL + categories[i].GetURL(), LastMod: time.Now(), ChangeFreq: "daily", Priority: 0.5})
+	var nodes []models.BrowseNode
+	models.DB.Find(&nodes)
+	for i := range nodes {
+		items = append(items, item{Loc: baseURL + nodes[i].GetURL(), LastMod: nodes[i].UpdatedAt, ChangeFreq: "daily", Priority: 0.5})
 	}
 
 	var products []models.Product
-	models.DB.Where("category_id != ? and tag_id IS NOT NULL", config.NewArrivalsID).Select("id, title, created_at, category_id, tag_id").Find(&products)
+	models.DB.Select("id, title, created_at, category_id, browse_node_id").Find(&products)
 	for i := range products {
-		items = append(items, item{Loc: baseURL + products[i].GetURL(), LastMod: products[i].CreatedAt, ChangeFreq: "weekly", Priority: 0.9})
+		items = append(items, item{Loc: baseURL + products[i].GetURL(), LastMod: products[i].UpdatedAt, ChangeFreq: "weekly", Priority: 0.9})
 	}
 
 	var pages []models.Page
-	models.DB.Find(&pages)
+	models.DB.Where("show = true").Find(&pages)
 	for i := range pages {
-		items = append(items, item{Loc: baseURL + products[i].GetURL(), LastMod: products[i].CreatedAt, ChangeFreq: "weekly", Priority: 0.4})
+		items = append(items, item{Loc: baseURL + pages[i].GetURL(), LastMod: pages[i].UpdatedAt, ChangeFreq: "monthly", Priority: 0.4})
 	}
 
 	//split items by linkLimit and write to separate files

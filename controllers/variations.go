@@ -13,7 +13,7 @@ func VariationJSONGet(c *gin.Context) {
 	asin := c.Param("asin")
 
 	variation := models.Variation{}
-	models.DB.Where("asin = ?", asin).First(&variation)
+	models.DB.Preload("ItemAttributes").Where("asin = ?", asin).First(&variation)
 	if variation.ID == 0 {
 		c.JSON(404, nil)
 	}

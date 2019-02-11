@@ -1,0 +1,33 @@
+{{define "bindings/show"}}
+  {{template "page_top" .}}
+  {{template "breadcrumbs" .Binding}}
+
+  <div class="binding-view">
+    {{if .Sidebar}}
+      <div class="sidebar">
+        {{template "sidebar" .}}
+      </div>
+      <div class="content-wrapper">
+    {{end}}
+    
+    <h1>{{.Title}}</h1>
+    <div class="row product-list">
+      {{range $index, $value := .Products}}
+        {{template "products/preview" .}}
+      {{else}}
+        <p class="ml-3">{{NoItemsMessage}}</p>
+      {{end}}
+    </div>
+    <div class="clearfix"></div>
+
+    {{template "pagination" .}}
+
+    {{if .Sidebar}}
+      </div><!-- .content-wrapper -->
+    {{end}}
+    <div class="clearfix"></div>
+  </div>
+
+  {{template "breadcrumbs" .Brand}}
+  {{template "page_bottom" .}}
+{{end}}

@@ -5,11 +5,9 @@ window.$ = $;
 
 import 'popper.js';
 import 'bootstrap';
-import 'superagent';
-//import './myvue';
 import 'malihu-custom-scrollbar-plugin';
 import '../scss/application.scss';
-import Siema from 'siema';
+//import Siema from 'siema';
 
 import {
   library,
@@ -24,15 +22,17 @@ import {
   faStar,
   faHome,
   faSync,
-  faTimes
+  faTimes,
+  faExternalLinkAlt
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFrown,
   faMehBlank,
   faStar as farStar,
+  faMeh,
 } from "@fortawesome/free-regular-svg-icons";
 
-library.add(faCog, faShoppingCart, faChevronRight, faChevronLeft, faCheck, faStar, farStar, faHome, faSync, faTimes, faFrown, faMehBlank);
+library.add(faExternalLinkAlt, faMeh, faCog, faShoppingCart, faChevronRight, faChevronLeft, faCheck, faStar, farStar, faHome, faSync, faTimes, faFrown, faMehBlank);
 
 $.fn.visibleHeight = function () {
   //see https://stackoverflow.com/questions/24768795/get-the-visible-height-of-a-div-with-jquery

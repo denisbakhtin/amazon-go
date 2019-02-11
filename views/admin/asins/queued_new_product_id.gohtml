@@ -1,0 +1,27 @@
+{{define "admin/asins/queued_new_product_id"}}
+  {{template "admin/page_top" .}}
+
+  {{template "admin/sidebar" .}}
+  <div class="content">
+    <h1>{{.Title}}</h1>
+
+    {{template "flash" .}}
+
+    <form method="POST">
+      <fieldset>
+        <input type="hidden" name="_csrf" value="{{.Csrf}}">
+        <div class="form-group">
+          <label class="control-label">Product ID</label>
+          <input type="text" class="form-control" placeholder="Product ID" name="product_id" autofocus />
+        </div>
+
+        <div class="form-group form-actions">
+          <input type="submit" class="btn btn-success" value="Submit" />
+          <a class="btn btn-default" href="/admin/queued_asins">Back to list</a>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+
+  {{template "admin/page_bottom" .}}
+{{end}}

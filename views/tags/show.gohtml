@@ -30,20 +30,6 @@
       <div class="clearfix"></div>
     {{end}}
 
-    {{$sidebarCategories := SidebarCategories}}
-    {{if $sidebarCategories}}
-      <h4 class="text-center strong text-success">To view all products select one of the departments</h4>
-      <div class="row text-center">
-        {{if $sidebarCategories}}
-          <ul class="nav nav-pills" id="department-body-list">
-            {{range $sidebarCategories}}
-              {{template "sidebar_scale_item" .}}
-            {{end}}
-          </ul>
-        {{end}}
-      </div>
-    {{end}}
-
     {{if .Sidebar}}
       </div><!-- .content-wrapper -->
     {{end}}

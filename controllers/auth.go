@@ -7,7 +7,6 @@ import (
 
 	"github.com/denisbakhtin/amazon-go/config"
 	"github.com/denisbakhtin/amazon-go/models"
-	"github.com/denisbakhtin/amazon-go/viewmodels"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"golang.org/x/crypto/bcrypt"
@@ -25,7 +24,7 @@ func SignInGet(c *gin.Context) {
 
 //SignInPost processes POST /signin
 func SignInPost(c *gin.Context) {
-	signin := viewmodels.SignIn{}
+	signin := models.SignIn{}
 	session := sessions.Default(c)
 	if err := c.ShouldBind(&signin); err != nil {
 		sessionErrorAndRedirect(c, err, "/signin")
@@ -66,7 +65,7 @@ func SignUpGet(c *gin.Context) {
 
 //SignUpPost processes POST /signup
 func SignUpPost(c *gin.Context) {
-	signup := viewmodels.SignUp{}
+	signup := models.SignUp{}
 	session := sessions.Default(c)
 	if err := c.ShouldBind(&signup); err != nil {
 		sessionErrorAndRedirect(c, err, "/signup")

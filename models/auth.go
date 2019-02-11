@@ -1,12 +1,12 @@
-package viewmodels
+package models
 
-//SignIn used for binding sign in form values
+//SignIn is a view model used for binding sign in form values
 type SignIn struct {
 	Email    string `form:"email" json:"email" binding:"required"`
 	Password string `form:"password" json:"password" binding:"required"`
 }
 
-//SignUp used for binding sign up form values
+//SignUp is a view model used for binding sign up form values
 type SignUp struct {
 	Email                string `form:"email" json:"email" binding:"required"`
 	Password             string `form:"password" json:"password" binding:"required"`

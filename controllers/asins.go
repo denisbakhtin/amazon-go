@@ -40,7 +40,7 @@ func QueuedAsinsNewGet(c *gin.Context) {
 
 	asin := models.QueuedAsin{}
 	H := DefaultH(c)
-	H["Title"] = "New Queued Asin"
+	H["Title"] = "Queue Asin"
 	H["Asin"] = &asin
 	H["Flash"] = flashes
 	c.HTML(200, "admin/asins/queued_new", H)
@@ -56,6 +56,37 @@ func QueuedAsinsNewPost(c *gin.Context) {
 	if err := models.DB.Create(&asin).Error; err != nil {
 		sessionErrorAndRedirect(c, err, "/admin/new_queued_asin")
 		return
+	}
+	c.Redirect(http.StatusSeeOther, "/admin/queued_asins")
+}
+
+//QueuedAsinsNewProductGet processes new queued_product_id request
+func QueuedAsinsNewProductGet(c *gin.Context) {
+	session := sessions.Default(c)
+	flashes := session.Flashes()
+	session.Save()
+
+	H := DefaultH(c)
+	H["Title"] = "Queue Product ID"
+	H["Flash"] = flashes
+	c.HTML(200, "admin/asins/queued_new_product_id", H)
+}
+
+//QueuedAsinsNewProductPost processes create queued_product_id request
+func QueuedAsinsNewProductPost(c *gin.Context) {
+	pID := models.QueuedProductID{}
+	if err := c.ShouldBind(&pID); err != nil {
+		sessionErrorAndRedirect(c, err, "/admin/new_queued_product_id")
+		return
+	}
+	product := models.Product{}
+	models.DB.First(&product, pID.ProductID)
+	if product.ID > 0 {
+		asin := models.QueuedAsin{Asin: product.Asin}
+		if err := models.DB.Create(&asin).Error; err != nil {
+			sessionErrorAndRedirect(c, err, "/admin/new_queued_product_id")
+			return
+		}
 	}
 	c.Redirect(http.StatusSeeOther, "/admin/queued_asins")
 }
@@ -93,6 +124,7 @@ func ProcessedAsinsDeletePost(c *gin.Context) {
 		c.HTML(500, "errors/500", gin.H{"Error": err.Error()})
 		return
 	}
+
 	c.Redirect(http.StatusSeeOther, "/admin/processed_asins")
 }
 
@@ -105,11 +137,23 @@ func QueuedAsinsClearPost(c *gin.Context) {
 //ProcessedAsinsClearPost clears processed asins table
 func ProcessedAsinsClearPost(c *gin.Context) {
 	aws.ClearProcessedAsins()
+	if len(c.Request.Referer()) > 0 {
+		//if called from queued asins page, return back there
+		c.Redirect(http.StatusSeeOther, c.Request.Referer())
+		return
+	}
 	c.Redirect(http.StatusSeeOther, "/admin/processed_asins")
 }
 
 //QueueAsinsPost queues available products
 func QueueAsinsPost(c *gin.Context) {
 	aws.QueueAvailableAsins()
+	c.Redirect(http.StatusSeeOther, "/admin/queued_asins")
+}
+
+//QueueAllAsinsPost queues available & unavailable products
+func QueueAllAsinsPost(c *gin.Context) {
+	aws.QueueAvailableAsins()
+	aws.QueueUnavailableAsins()
 	c.Redirect(http.StatusSeeOther, "/admin/queued_asins")
 }

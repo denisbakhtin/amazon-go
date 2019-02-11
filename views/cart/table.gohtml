@@ -6,10 +6,11 @@
 					<tr>
 						<th class="image"></th>
 						<th class="title">Product Name</th>
-						<th class="price">Unit Price</th>
-						<th class="quantity">Qty</th>
-						<th class="sum">Subtotal</th>
-						<th class="delete"></th>
+						<th class="original_url shrink">Original Link</th>
+						<th class="price shrink">Unit Price</th>
+						<th class="quantity shrink">Qty</th>
+						<th class="sum shrink">Subtotal</th>
+						<th class="delete shrink"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -17,19 +18,20 @@
 						<tr>
 							<td class="image"><a href="{{.URL}}"><img src="{{.Image}}" /></a></td>
 							<td class="title"><a href="{{.URL}}">{{.Title}}</a></td>
-							<td class="price">{{.Price}}</td>
-							<td class="quantity">
+							<td class="original_url shrink"><a href="{{.OriginalURL}}" target="_blank"><i class="fas fa-external-link-alt"></i></a></td>
+							<td class="price shrink">{{.Price}}</td>
+							<td class="quantity shrink">
 								<form action="/cart/update" method="POST">
 									<input type="number" name="quantity" value="{{.Quantity}}" onchange="this.form.submit();" title="Update quantity" />
 									<input type="hidden" name="asin" value="{{.Asin}}" />
 								</form>
 							</td>
-							<td class="sum">{{.SubTotal}}</td>
-							<td class="delete">
+							<td class="sum shrink">{{.SubTotal}}</td>
+							<td class="delete shrink">
 								<form action="/cart/update" method="POST">
 									<input type="hidden" name="quantity" value="0" />
 									<input type="hidden" name="asin" value="{{.Asin}}" />
-									<button class="btn btn-default btn-sm" type="submit" title="Remove item"><span class="fa fa-times"></span></button>
+									<button class="btn btn-outline-danger btn-sm" type="submit" title="Remove item"><span class="fa fa-times"></span></button>
 								</form>
 							</td>
 						</tr>
@@ -48,6 +50,7 @@
 			</table>
 
 			<div class="actions">
+				<p class="text-muted">Note: proceed to retailer web-site upon clicking the "Check out" button.</p>
 				<a href="/cart/checkout" class="btn btn-success mr-2" onclick="this.form.submit();" id="checkout-btn">
 					<span class="fa fa-check"></span>
 					Check out

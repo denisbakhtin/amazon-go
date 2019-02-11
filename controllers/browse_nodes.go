@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"math"
 	"net/http"
-	"strconv"
 
 	"github.com/gin-gonic/gin"
 
+	"github.com/denisbakhtin/amazon-go/cache"
 	"github.com/denisbakhtin/amazon-go/config"
 	"github.com/denisbakhtin/amazon-go/models"
 	"github.com/denisbakhtin/amazon-go/utility"
@@ -50,28 +50,26 @@ func TagGet(c *gin.Context) {
 	}
 
 	node.LoadAllChildren()
+	node.LoadAllParents()
 	ids := node.AppendIDs(models.SELFANDCHILDREN)
 	totalCount := 0
-	models.DB.Model(models.Product{}).Where("browse_node_id IN(?) AND available = true", ids).Count(&totalCount)
+	dbQuery := models.DB.Model(models.Product{}).Where("browse_node_id IN(?) AND available = true", ids)
+	dbQuery = applyProductFilters(c, dbQuery)
+	dbQuery.Count(&totalCount)
 	totalPages := int(math.Ceil(float64(totalCount) / float64(config.PerPage)))
 
 	//page number
-	currentPage := 1
-	if pageStr := c.Query("page"); pageStr != "" {
-		currentPage, _ = strconv.Atoi(pageStr)
-	}
-	currentPage = int(math.Max(float64(1), float64(currentPage)))
+	currentPage := utility.CurrentPage(c)
 
-	models.DB.
+	dbQuery.
 		Preload("BrowseNode").
-		Where("browse_node_id IN(?) AND available = true", ids).
+		Preload("Brand").
 		Order("rate desc, discount_percent desc, id desc").
 		Limit(config.PerPage).
 		Offset((currentPage - 1) * config.PerPage).
 		Find(&node.Products)
 
 	if (len(node.Products) < config.PerPage) && (currentPage == 1) {
-		node.LoadAllParents()
 		topParent := node.TopParent()
 		topParent.LoadAllChildren()
 		allids := topParent.AppendIDs(models.SELFANDCHILDREN)
@@ -89,6 +87,9 @@ func TagGet(c *gin.Context) {
 	H["Tag"] = &node
 	H["BodyClass"] = "mw-1400"
 	H["Sidebar"] = true
+	H["MetaKeywords"] = node.GetMetaKeywords()
+	H["MetaDescription"] = node.GetMetaDescription()
+	H["SidebarBrands"] = cache.GetNodeBrands(&node)
 	H["Pagination"] = utility.Paginator(currentPage, totalPages, c.Request.URL)
 	c.HTML(200, "tags/show", H)
 }

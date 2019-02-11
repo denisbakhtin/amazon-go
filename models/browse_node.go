@@ -3,8 +3,8 @@ package models
 import (
 	"fmt"
 
+	"github.com/denisbakhtin/amazon-go/config"
 	"github.com/denisbakhtin/amazon-go/utility"
-	"github.com/denisbakhtin/amazon-go/viewmodels"
 )
 
 //BrowseNode stores info about product browse node
@@ -16,11 +16,13 @@ type BrowseNode struct {
 	ParentID          *uint64   `gorm:"index:browse_node_parent_idx;"`
 	Parent            *BrowseNode
 	Children          []BrowseNode `gorm:"foreignkey:parent_id"`
+	ThreeChildren     []BrowseNode `gorm:"-"` //shown at home page
 	ProductCount      int
 	OwnProductCount   int
 	AllParentsLoaded  bool `gorm:"-"`
 	AllChildrenLoaded bool `gorm:"-"`
 	Description       string
+	Image             string
 }
 
 //GetURL returns the proper browse node url
@@ -52,81 +54,60 @@ func (b *BrowseNode) MainImage() string {
 
 //LoadAllChildren loads full children hierarchy for the current node
 func (b *BrowseNode) LoadAllChildren() {
-	DB.Where("parent_id = ?", b.ID).
-		Preload("Children").
-		Preload("Children.Children").
-		Preload("Children.Children.Children").
-		Preload("Children.Children.Children.Children").
-		Preload("Children.Children.Children.Children.Children").
-		Preload("Children.Children.Children.Children.Children.Children").
-		Preload("Children.Children.Children.Children.Children.Children.Children").
-		Preload("Children.Children.Children.Children.Children.Children.Children.Children").
-		Preload("Children.Children.Children.Children.Children.Children.Children.Children.Children").
-		Preload("Children.Children.Children.Children.Children.Children.Children.Children.Children.Children").
-		Preload("Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children").
-		Preload("Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children").
-		Preload("Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children").
-		Preload("Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children").
-		Preload("Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children").
-		Preload("Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children").
-		Preload("Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children").
-		Preload("Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children").
-		Find(&b.Children)
-	b.AllChildrenLoaded = true
+	if !b.AllChildrenLoaded {
+		DB.Where("parent_id = ?", b.ID).
+			Preload("Children").
+			Preload("Children.Children").
+			Preload("Children.Children.Children").
+			Preload("Children.Children.Children.Children").
+			Preload("Children.Children.Children.Children.Children").
+			Preload("Children.Children.Children.Children.Children.Children").
+			Preload("Children.Children.Children.Children.Children.Children.Children").
+			Preload("Children.Children.Children.Children.Children.Children.Children.Children").
+			Preload("Children.Children.Children.Children.Children.Children.Children.Children.Children").
+			Preload("Children.Children.Children.Children.Children.Children.Children.Children.Children.Children").
+			Preload("Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children").
+			Preload("Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children").
+			Preload("Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children").
+			Preload("Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children").
+			Preload("Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children").
+			Preload("Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children").
+			Preload("Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children").
+			Preload("Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children.Children").
+			Find(&b.Children)
+		b.AllChildrenLoaded = true
+	}
 }
 
 //LoadAllParents loads full parent hierarchy for the current node
 func (b *BrowseNode) LoadAllParents() {
-	if b.ParentID != nil {
-		parent := BrowseNode{}
-		DB.
-			Preload("Parent").
-			Preload("Parent.Parent").
-			Preload("Parent.Parent.Parent").
-			Preload("Parent.Parent.Parent.Parent").
-			Preload("Parent.Parent.Parent.Parent.Parent").
-			Preload("Parent.Parent.Parent.Parent.Parent.Parent").
-			Preload("Parent.Parent.Parent.Parent.Parent.Parent.Parent").
-			Preload("Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent").
-			Preload("Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent").
-			Preload("Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent").
-			Preload("Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent").
-			Preload("Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent").
-			Preload("Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent").
-			Preload("Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent").
-			Preload("Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent").
-			Preload("Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent").
-			Preload("Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent").
-			Preload("Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent").
-			First(&parent, *b.ParentID)
-		b.Parent = &parent
-	}
-	b.AllParentsLoaded = true
-}
-
-//GetThreeChildren returns a slice of 3 children and/or successors
-func (b *BrowseNode) GetThreeChildren() []BrowseNode {
-	if !b.AllChildrenLoaded {
-		b.LoadAllChildren()
-	}
-	result := make([]BrowseNode, 0, 3)
-	result = appendChildren(3, b, result)
-	return result
-}
-
-func appendChildren(number int, b *BrowseNode, result []BrowseNode) []BrowseNode {
-	//append direct children first
-	for i := 0; len(result) < number && i < len(b.Children); i++ {
-		if b.Children[i].OwnProductCount > 0 {
-			result = append(result, b.Children[i])
+	if !b.AllParentsLoaded {
+		if b.ParentID != nil {
+			parent := BrowseNode{}
+			DB.
+				Preload("Parent").
+				Preload("Parent.Parent").
+				Preload("Parent.Parent.Parent").
+				Preload("Parent.Parent.Parent.Parent").
+				Preload("Parent.Parent.Parent.Parent.Parent").
+				Preload("Parent.Parent.Parent.Parent.Parent.Parent").
+				Preload("Parent.Parent.Parent.Parent.Parent.Parent.Parent").
+				Preload("Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent").
+				Preload("Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent").
+				Preload("Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent").
+				Preload("Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent").
+				Preload("Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent").
+				Preload("Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent").
+				Preload("Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent").
+				Preload("Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent").
+				Preload("Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent").
+				Preload("Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent").
+				Preload("Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent").
+				First(&parent, *b.ParentID)
+			b.Parent = &parent
 		}
+		b.AllParentsLoaded = true
 	}
-	if len(result) < number {
-		for i := range b.Children {
-			result = appendChildren(number, &b.Children[i], result)
-		}
-	}
-	return result
 }
 
 //AppendIDs appends this and children or parent ids depending on parameter hierarchy
@@ -157,18 +138,16 @@ func (b *BrowseNode) AppendIDs(hierarchy string) []uint64 {
 	return ids
 }
 
-//Breadcrumbs returns browse node parent breadcrumbs
-func (b *BrowseNode) Breadcrumbs() []viewmodels.Breadcrumb {
-	if !b.AllParentsLoaded {
-		b.LoadAllParents()
-	}
+//Breadcrumbs returns tag's breadcrumbs
+func (b *BrowseNode) Breadcrumbs() []Breadcrumb {
+	b.LoadAllParents()
 	return b.buildBreadcrumbs()
 }
 
-func (b *BrowseNode) buildBreadcrumbs() []viewmodels.Breadcrumb {
-	crumbs := make([]viewmodels.Breadcrumb, 0, 20)
+func (b *BrowseNode) buildBreadcrumbs() []Breadcrumb {
+	crumbs := make([]Breadcrumb, 0, 20)
 	if b.Parent != nil {
-		crumbs = append(b.Parent.buildBreadcrumbs(), viewmodels.Breadcrumb{URL: b.Parent.GetURL(), Title: b.Parent.Title})
+		crumbs = append(b.Parent.buildBreadcrumbs(), Breadcrumb{URL: b.Parent.GetURL(), Title: b.Parent.Title})
 	}
 	return crumbs
 }
@@ -196,4 +175,27 @@ func TopNodes() []BrowseNode {
 	var nodes []BrowseNode
 	DB.Where("parent_id is null").Find(&nodes)
 	return nodes
+}
+
+//IDStr returns string representation of id
+func (b *BrowseNode) IDStr() string {
+	return fmt.Sprintf("%d", b.ID)
+}
+
+//GetMetaKeywords returns meta keywords
+func (b *BrowseNode) GetMetaKeywords() string {
+	keywords := b.Title
+	if topParent := b.TopParent(); topParent != b {
+		keywords = keywords + ", " + topParent.Title
+	}
+	return fmt.Sprintf("%s, %s", keywords, config.SiteName)
+}
+
+//GetMetaDescription returns meta description
+func (b *BrowseNode) GetMetaDescription() (result string) {
+	title := b.Title
+	if topParent := b.TopParent(); topParent != b {
+		title = title + ", " + topParent.Title
+	}
+	return fmt.Sprintf("Buy %s at the %s gateway shopping centre. Discount and Free Shipping on eligible items.", title, config.SiteName)
 }

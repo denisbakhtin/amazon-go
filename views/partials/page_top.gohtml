@@ -6,17 +6,25 @@
       <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       {{if .Title}}
-        <title>{{.Title}}</title>
+        {{if eq .Title .SiteTitle}}
+          <title>{{.Title}}</title>
+        {{else}}
+          <title>{{.Title}} | {{.SiteTitle}}</title>
+        {{end}}
       {{else}}
-        <title>{{SiteTitle}}</title>
+        <title>{{.SiteTitle}}</title>
       {{end}}
+      <meta property="og:title" content="{{.Title}}">
+      <meta name="twitter:title" content="{{.Title}}">
       {{if .MetaDescription}}
         <meta name="description" content="{{.MetaDescription}}">
+        <meta property="og:description" content="{{.MetaDescription}}">
+        <meta name="twitter:description" content="{{.MetaDescription}}">
       {{end}}
       {{if .MetaKeywords}}
         <meta name="keywords" content="{{.MetaKeywords}}">
       {{end}}
-      <meta name="google-site-verification" content="848-18pWS7A18JMVzuHFK22SraH8k6y7QE9PeJiQkmE">
+      <meta name="google-site-verification" content="{{.GoogleVerification}}">
       <link rel="stylesheet" href="/assets/main.css">
       <script src="/assets/application.js"></script> 
 
@@ -25,6 +33,14 @@
 
     <body class="{{.BodyClass}}">
       {{template "navbar" .}}
+
+      {{if .MenuNodes}}
+        <div class="menu-nodes-wrapper">
+          {{range .MenuNodes}}
+            <a class="badge badge-default" href="{{.GetURL}}">{{.Title}} <span class="ml-1 text-muted">{{.ProductCount}}</span></a>
+          {{end}}
+        </div>
+      {{end}}
 
       {{if .HomeTopProducts}}
         <div class="home-top-products-wrapper">

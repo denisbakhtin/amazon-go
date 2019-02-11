@@ -7,19 +7,19 @@ import (
 	"strings"
 
 	"github.com/denisbakhtin/amazon-go/utility"
-	"github.com/denisbakhtin/amazon-go/viewmodels"
 )
 
 //Category stores info about product category
 type Category struct {
 	Model
-	Title        string
-	ParentID     *uint64 `gorm:"index:category_parent_idx"`
-	Description  string
+	Title        string  `form:"title" binding:"required"`
+	ParentID     *uint64 `form:"parent_id" gorm:"index:category_parent_idx"`
+	Description  string  `form:"description" binding:"required"`
 	Image        string
 	Children     []Category
 	Products     []Product
-	ProductCount int64 `sql:"-"` //product count cache
+	ProductCount int64  `gorm:"-"` //product count cache
+	Submit       string `gorm:"-" form:"submit" binding:"required"`
 }
 
 //BeforeSave gorm hook
@@ -148,7 +148,7 @@ func (c *Category) compileDescription() string {
 }
 
 //Breadcrumbs returns category breadcrumbs
-func (c *Category) Breadcrumbs() []viewmodels.Breadcrumb {
+func (c *Category) Breadcrumbs() []Breadcrumb {
 	return nil
 }
 

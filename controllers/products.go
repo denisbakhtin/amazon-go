@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"time"
 
 	"github.com/denisbakhtin/amazon-go/utility"
 
@@ -20,9 +19,10 @@ func ProductGet(c *gin.Context) {
 	product := models.Product{}
 	models.DB.
 		Preload("Variations", func(db *gorm.DB) *gorm.DB {
-			return db.Where("available = true").Order("variations.dim1_value ASC, variations.discount_percent DESC")
+			return db.Preload("ItemAttributes").Where("available = true").Order("variations.dim1_value ASC, variations.discount_percent DESC")
 		}).
 		Preload("Brand").
+		Preload("Binding").
 		Preload("BrowseNode").
 		Preload("BrowseNode.Parent").
 		Preload("BrowseNode.Parent.Parent").
@@ -51,7 +51,6 @@ func ProductGet(c *gin.Context) {
 	H := DefaultH(c)
 	H["Product"] = &product
 	H["Title"] = product.Title
-	H["UpdatedAt"] = product.UpdatedAt.Format(time.ANSIC)
 	H["MetaKeywords"] = product.GetMetaKeywords()
 	H["MetaDescription"] = product.GetMetaDescription()
 	H["SimilarProducts"] = product.Similar()

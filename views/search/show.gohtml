@@ -1,16 +1,23 @@
 {{define "search/show"}}
   {{template "page_top" .}}
 
-  <div class="tag-view">
+  <div class="search-view">
     <div class="title"><h1>{{.Title}}</h1></div>
 
-    <div class="row product-list">
-      {{if len .Products | lt 0}}
-        {{range $index, $value := .Products}}
-          {{template "products/preview" .}}
+    {{if len .Nodes | lt 0}}
+      <div class="search-tags mb-2">
+				<h4>Tags</h4>
+        {{range .Nodes}}
+          <a href="{{.GetURL}}" class="badge badge-pill badge-primary">{{.Title}} <span class="ml-1 text-muted">{{.ProductCount}}</span></a>
         {{end}}
+			</div>
+    {{end}}
+
+    <div class="row product-list">
+      {{range $index, $value := .Products}}
+        {{template "products/preview" .}}
       {{else}}
-        <p>No available products satisfy your search request, please try again.</p>
+        <p class="ml-3">{{NoItemsMessage}}</p>
       {{end}}
     </div>
 

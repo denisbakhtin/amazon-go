@@ -1,12 +1,13 @@
 {{define "sidebar_brand"}}
-  {{if .BrandScale}}
-    <h4>Brands</h4>
-    <div id="sidebar-brand-wrapper">
-      <ul class="nav nav-pills nav-stacked" id="sidebar-brand">
-        {{range .BrandScale}}
-          {{template "sidebar_scale_item" .}}
-        {{end}}
-      </ul>
+    <div class="sidebar-brand my-4 mx-2">
+        <h5>Brands</h5>
+        <div class="sidebar-brand-content">
+            {{range .SidebarBrands}}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="brand[]" id="brand_{{.ID}}" value="{{.ID}}" {{if $.Context.QueryArray "brand[]" | StringSliceContains .IDStr}}checked{{end}} onchange="this.form.submit();">
+                    <label class="form-check-label text-truncate" for="brand_{{.ID}}">{{.Title}}</label>
+                </div>
+            {{end}}
+        </div>
     </div>
-  {{end}}
 {{end}}

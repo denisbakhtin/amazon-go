@@ -1,0 +1,358 @@
+2019/01/25 00:19:51 config.go:164: Application started in debug environment
+2019/01/25 00:19:51 redis.go:38: Redis cache has been initialized
+2019/01/25 00:19:52 deals_parse.go:56: Starting deals parser
+2019/01/25 00:19:52 feed_parse.go:26: Starting feed parser
+2019/01/25 00:19:52 product_update.go:21: Product update started
+2019/01/25 11:15:29 config.go:164: Application started in debug environment
+2019/01/25 11:15:29 redis.go:38: Redis cache has been initialized
+2019/01/25 11:15:31 deals_parse.go:56: Starting deals parser
+2019/01/25 11:15:31 feed_parse.go:26: Starting feed parser
+2019/01/25 11:15:31 product_update.go:21: Product update started
+2019/01/25 11:22:08 config.go:164: Application started in debug environment
+2019/01/25 11:22:08 redis.go:38: Redis cache has been initialized
+2019/01/25 11:22:09 deals_parse.go:56: Starting deals parser
+2019/01/25 11:22:09 feed_parse.go:26: Starting feed parser
+2019/01/25 11:22:09 product_update.go:21: Product update started
+2019/01/25 11:24:51 config.go:164: Application started in debug environment
+2019/01/25 11:24:51 redis.go:38: Redis cache has been initialized
+2019/01/25 11:24:52 feed_parse.go:26: Starting feed parser
+2019/01/25 11:24:52 product_update.go:21: Product update started
+2019/01/25 11:26:19 config.go:164: Application started in debug environment
+2019/01/25 11:26:19 redis.go:38: Redis cache has been initialized
+2019/01/25 11:26:20 feed_parse.go:26: Starting feed parser
+2019/01/25 11:26:20 product_update.go:21: Product update started
+2019/01/25 11:31:07 config.go:164: Application started in debug environment
+2019/01/25 11:31:07 redis.go:38: Redis cache has been initialized
+2019/01/25 11:31:08 feed_parse.go:26: Starting feed parser
+2019/01/25 11:31:08 product_update.go:21: Product update started
+2019/01/25 11:42:40 config.go:164: Application started in debug environment
+2019/01/25 11:42:40 redis.go:38: Redis cache has been initialized
+2019/01/25 11:42:41 feed_parse.go:26: Starting feed parser
+2019/01/25 11:42:41 product_update.go:21: Product update started
+2019/01/25 11:42:50 cart.go:93: json: Unmarshal(nil *aws.CartResponse)
+2019/01/25 11:56:23 config.go:164: Application started in debug environment
+2019/01/25 11:56:23 redis.go:38: Redis cache has been initialized
+2019/01/25 11:56:24 feed_parse.go:26: Starting feed parser
+2019/01/25 11:56:24 product_update.go:21: Product update started
+2019/01/25 11:56:31 cart.go:90: You have exceeded the maximum quantity allowed for the following items: B071ZSSJTM.
+2019/01/25 11:56:31 cart.go:94: json: Unmarshal(nil *aws.CartResponse)
+2019/01/25 12:00:57 config.go:164: Application started in debug environment
+2019/01/25 12:00:57 redis.go:38: Redis cache has been initialized
+2019/01/25 12:00:59 feed_parse.go:26: Starting feed parser
+2019/01/25 12:00:59 product_update.go:21: Product update started
+2019/01/25 12:03:32 config.go:164: Application started in debug environment
+2019/01/25 12:03:32 redis.go:38: Redis cache has been initialized
+2019/01/25 12:03:34 feed_parse.go:26: Starting feed parser
+2019/01/25 12:03:34 product_update.go:21: Product update started
+2019/01/25 12:07:00 config.go:164: Application started in debug environment
+2019/01/25 12:07:00 redis.go:38: Redis cache has been initialized
+2019/01/25 12:07:01 feed_parse.go:26: Starting feed parser
+2019/01/25 12:07:01 product_update.go:21: Product update started
+2019/01/25 12:07:44 config.go:164: Application started in debug environment
+2019/01/25 12:07:44 redis.go:38: Redis cache has been initialized
+2019/01/25 12:07:46 feed_parse.go:26: Starting feed parser
+2019/01/25 12:07:46 product_update.go:21: Product update started
+2019/01/25 12:09:05 config.go:164: Application started in debug environment
+2019/01/25 12:09:05 redis.go:38: Redis cache has been initialized
+2019/01/25 12:09:07 feed_parse.go:26: Starting feed parser
+2019/01/25 12:09:07 product_update.go:21: Product update started
+2019/01/25 12:09:24 config.go:164: Application started in debug environment
+2019/01/25 12:09:24 redis.go:38: Redis cache has been initialized
+2019/01/25 12:09:25 feed_parse.go:26: Starting feed parser
+2019/01/25 12:09:25 product_update.go:21: Product update started
+2019/01/25 12:10:33 config.go:164: Application started in debug environment
+2019/01/25 12:10:33 redis.go:38: Redis cache has been initialized
+2019/01/25 12:10:35 feed_parse.go:26: Starting feed parser
+2019/01/25 12:10:35 product_update.go:21: Product update started
+2019/01/25 12:10:48 config.go:164: Application started in debug environment
+2019/01/25 12:10:48 redis.go:38: Redis cache has been initialized
+2019/01/25 12:10:49 feed_parse.go:26: Starting feed parser
+2019/01/25 12:10:49 product_update.go:21: Product update started
+2019/01/25 12:11:01 config.go:164: Application started in debug environment
+2019/01/25 12:11:01 redis.go:38: Redis cache has been initialized
+2019/01/25 12:11:03 feed_parse.go:26: Starting feed parser
+2019/01/25 12:11:03 product_update.go:21: Product update started
+2019/01/25 12:11:16 config.go:164: Application started in debug environment
+2019/01/25 12:11:16 redis.go:38: Redis cache has been initialized
+2019/01/25 12:11:17 feed_parse.go:26: Starting feed parser
+2019/01/25 12:11:17 product_update.go:21: Product update started
+2019/01/25 12:11:28 config.go:164: Application started in debug environment
+2019/01/25 12:11:28 redis.go:38: Redis cache has been initialized
+2019/01/25 12:11:29 feed_parse.go:26: Starting feed parser
+2019/01/25 12:11:29 product_update.go:21: Product update started
+2019/01/25 12:11:51 config.go:164: Application started in debug environment
+2019/01/25 12:11:52 redis.go:38: Redis cache has been initialized
+2019/01/25 12:11:53 product_update.go:21: Product update started
+2019/01/25 12:11:53 feed_parse.go:26: Starting feed parser
+2019/01/25 12:17:17 config.go:164: Application started in debug environment
+2019/01/25 12:17:17 redis.go:38: Redis cache has been initialized
+2019/01/25 12:17:18 feed_parse.go:26: Starting feed parser
+2019/01/25 12:17:18 product_update.go:21: Product update started
+2019/01/25 12:17:56 config.go:164: Application started in debug environment
+2019/01/25 12:17:56 redis.go:38: Redis cache has been initialized
+2019/01/25 12:17:57 feed_parse.go:26: Starting feed parser
+2019/01/25 12:17:57 product_update.go:21: Product update started
+2019/01/25 12:24:13 config.go:164: Application started in debug environment
+2019/01/25 12:24:13 redis.go:38: Redis cache has been initialized
+2019/01/25 12:24:14 feed_parse.go:26: Starting feed parser
+2019/01/25 12:24:14 product_update.go:21: Product update started
+2019/01/25 12:24:22 config.go:164: Application started in debug environment
+2019/01/25 12:24:22 redis.go:38: Redis cache has been initialized
+2019/01/25 12:24:23 feed_parse.go:26: Starting feed parser
+2019/01/25 12:24:23 product_update.go:21: Product update started
+2019/01/25 12:30:50 config.go:164: Application started in debug environment
+2019/01/25 12:30:50 redis.go:38: Redis cache has been initialized
+2019/01/25 12:30:51 feed_parse.go:26: Starting feed parser
+2019/01/25 12:30:51 product_update.go:21: Product update started
+2019/01/25 12:31:39 config.go:164: Application started in debug environment
+2019/01/25 12:31:39 redis.go:38: Redis cache has been initialized
+2019/01/25 12:31:41 feed_parse.go:26: Starting feed parser
+2019/01/25 12:31:41 product_update.go:21: Product update started
+2019/01/25 12:32:04 config.go:164: Application started in debug environment
+2019/01/25 12:32:04 redis.go:38: Redis cache has been initialized
+2019/01/25 12:32:05 feed_parse.go:26: Starting feed parser
+2019/01/25 12:32:05 product_update.go:21: Product update started
+2019/01/25 12:32:47 config.go:164: Application started in debug environment
+2019/01/25 12:32:47 redis.go:38: Redis cache has been initialized
+2019/01/25 12:32:48 feed_parse.go:26: Starting feed parser
+2019/01/25 12:32:48 product_update.go:21: Product update started
+2019/01/25 12:36:24 config.go:164: Application started in debug environment
+2019/01/25 12:36:24 redis.go:38: Redis cache has been initialized
+2019/01/25 12:36:26 feed_parse.go:26: Starting feed parser
+2019/01/25 12:36:26 product_update.go:21: Product update started
+2019/01/25 12:37:15 config.go:164: Application started in debug environment
+2019/01/25 12:37:15 redis.go:38: Redis cache has been initialized
+2019/01/25 12:37:16 feed_parse.go:26: Starting feed parser
+2019/01/25 12:37:16 product_update.go:21: Product update started
+2019/01/25 12:44:21 config.go:164: Application started in debug environment
+2019/01/25 12:44:21 redis.go:38: Redis cache has been initialized
+2019/01/25 12:44:23 feed_parse.go:26: Starting feed parser
+2019/01/25 12:44:23 product_update.go:21: Product update started
+2019/01/25 12:44:38 config.go:164: Application started in debug environment
+2019/01/25 12:44:38 redis.go:38: Redis cache has been initialized
+2019/01/25 12:44:39 feed_parse.go:26: Starting feed parser
+2019/01/25 12:44:39 product_update.go:21: Product update started
+2019/01/25 12:44:55 config.go:164: Application started in debug environment
+2019/01/25 12:44:55 redis.go:38: Redis cache has been initialized
+2019/01/25 12:44:56 feed_parse.go:26: Starting feed parser
+2019/01/25 12:44:56 product_update.go:21: Product update started
+2019/01/25 12:54:05 config.go:164: Application started in debug environment
+2019/01/25 12:54:05 redis.go:38: Redis cache has been initialized
+2019/01/25 12:54:07 feed_parse.go:26: Starting feed parser
+2019/01/25 12:54:07 product_update.go:21: Product update started
+2019/01/25 12:56:35 config.go:164: Application started in debug environment
+2019/01/25 12:56:35 redis.go:38: Redis cache has been initialized
+2019/01/25 12:56:36 feed_parse.go:26: Starting feed parser
+2019/01/25 12:56:36 product_update.go:21: Product update started
+2019/01/25 12:57:01 config.go:164: Application started in debug environment
+2019/01/25 12:57:01 redis.go:38: Redis cache has been initialized
+2019/01/25 12:57:02 feed_parse.go:26: Starting feed parser
+2019/01/25 12:57:02 product_update.go:21: Product update started
+2019/01/25 12:57:40 config.go:164: Application started in debug environment
+2019/01/25 12:57:40 redis.go:38: Redis cache has been initialized
+2019/01/25 12:57:41 feed_parse.go:26: Starting feed parser
+2019/01/25 12:57:41 product_update.go:21: Product update started
+2019/01/25 12:57:47 config.go:164: Application started in debug environment
+2019/01/25 12:57:47 redis.go:38: Redis cache has been initialized
+2019/01/25 12:57:48 product_update.go:21: Product update started
+2019/01/25 12:57:48 feed_parse.go:26: Starting feed parser
+2019/01/25 12:58:35 config.go:164: Application started in debug environment
+2019/01/25 12:58:35 redis.go:38: Redis cache has been initialized
+2019/01/25 12:58:37 feed_parse.go:26: Starting feed parser
+2019/01/25 12:58:37 product_update.go:21: Product update started
+2019/01/25 12:59:25 config.go:164: Application started in debug environment
+2019/01/25 12:59:25 redis.go:38: Redis cache has been initialized
+2019/01/25 12:59:26 feed_parse.go:26: Starting feed parser
+2019/01/25 12:59:26 product_update.go:21: Product update started
+2019/01/25 13:00:07 config.go:164: Application started in debug environment
+2019/01/25 13:00:07 redis.go:38: Redis cache has been initialized
+2019/01/25 13:00:08 feed_parse.go:26: Starting feed parser
+2019/01/25 13:00:08 product_update.go:21: Product update started
+2019/01/25 13:00:56 config.go:164: Application started in debug environment
+2019/01/25 13:00:56 redis.go:38: Redis cache has been initialized
+2019/01/25 13:00:57 feed_parse.go:26: Starting feed parser
+2019/01/25 13:00:57 product_update.go:21: Product update started
+2019/01/25 13:01:05 config.go:164: Application started in debug environment
+2019/01/25 13:01:05 redis.go:38: Redis cache has been initialized
+2019/01/25 13:01:07 feed_parse.go:26: Starting feed parser
+2019/01/25 13:01:07 product_update.go:21: Product update started
+2019/01/25 13:02:14 config.go:164: Application started in debug environment
+2019/01/25 13:02:14 redis.go:38: Redis cache has been initialized
+2019/01/25 13:02:15 feed_parse.go:26: Starting feed parser
+2019/01/25 13:02:15 product_update.go:21: Product update started
+2019/01/25 13:04:57 config.go:164: Application started in debug environment
+2019/01/25 13:04:57 redis.go:38: Redis cache has been initialized
+2019/01/25 13:04:58 feed_parse.go:26: Starting feed parser
+2019/01/25 13:04:58 product_update.go:21: Product update started
+2019/01/25 13:07:01 config.go:164: Application started in debug environment
+2019/01/25 13:07:01 redis.go:38: Redis cache has been initialized
+2019/01/25 13:07:03 feed_parse.go:26: Starting feed parser
+2019/01/25 13:07:03 product_update.go:21: Product update started
+2019/01/25 13:11:54 config.go:164: Application started in debug environment
+2019/01/25 13:11:54 redis.go:38: Redis cache has been initialized
+2019/01/25 13:11:55 feed_parse.go:26: Starting feed parser
+2019/01/25 13:11:55 product_update.go:21: Product update started
+2019/01/25 13:13:03 config.go:164: Application started in debug environment
+2019/01/25 13:13:03 redis.go:38: Redis cache has been initialized
+2019/01/25 13:13:05 feed_parse.go:26: Starting feed parser
+2019/01/25 13:13:05 product_update.go:21: Product update started
+2019/01/25 13:13:43 config.go:164: Application started in debug environment
+2019/01/25 13:13:43 redis.go:38: Redis cache has been initialized
+2019/01/25 13:13:44 feed_parse.go:26: Starting feed parser
+2019/01/25 13:13:44 product_update.go:21: Product update started
+2019/01/25 13:13:54 config.go:164: Application started in debug environment
+2019/01/25 13:13:54 redis.go:38: Redis cache has been initialized
+2019/01/25 13:13:55 feed_parse.go:26: Starting feed parser
+2019/01/25 13:13:55 product_update.go:21: Product update started
+2019/01/25 13:58:25 config.go:164: Application started in debug environment
+2019/01/25 13:58:25 redis.go:38: Redis cache has been initialized
+2019/01/25 13:58:26 feed_parse.go:26: Starting feed parser
+2019/01/25 13:58:26 product_update.go:21: Product update started
+2019/01/25 13:59:41 config.go:164: Application started in debug environment
+2019/01/25 13:59:41 redis.go:38: Redis cache has been initialized
+2019/01/25 13:59:42 feed_parse.go:26: Starting feed parser
+2019/01/25 13:59:42 product_update.go:21: Product update started
+2019/01/25 14:00:09 config.go:164: Application started in debug environment
+2019/01/25 14:00:09 redis.go:38: Redis cache has been initialized
+2019/01/25 14:00:10 feed_parse.go:26: Starting feed parser
+2019/01/25 14:00:10 product_update.go:21: Product update started
+2019/01/25 14:05:23 config.go:164: Application started in debug environment
+2019/01/25 14:05:23 redis.go:38: Redis cache has been initialized
+2019/01/25 14:05:24 feed_parse.go:26: Starting feed parser
+2019/01/25 14:05:24 product_update.go:21: Product update started
+2019/01/25 14:05:45 config.go:164: Application started in debug environment
+2019/01/25 14:05:45 redis.go:38: Redis cache has been initialized
+2019/01/25 14:05:46 feed_parse.go:26: Starting feed parser
+2019/01/25 14:05:46 product_update.go:21: Product update started
+2019/01/25 14:45:12 config.go:164: Application started in debug environment
+2019/01/25 14:45:13 redis.go:38: Redis cache has been initialized
+2019/01/25 14:45:14 feed_parse.go:26: Starting feed parser
+2019/01/25 14:45:14 product_update.go:21: Product update started
+2019/01/25 14:45:29 config.go:164: Application started in debug environment
+2019/01/25 14:45:29 redis.go:38: Redis cache has been initialized
+2019/01/25 14:45:31 product_update.go:21: Product update started
+2019/01/25 14:45:31 feed_parse.go:26: Starting feed parser
+2019/01/25 14:59:39 config.go:164: Application started in debug environment
+2019/01/25 14:59:40 redis.go:38: Redis cache has been initialized
+2019/01/25 14:59:41 feed_parse.go:26: Starting feed parser
+2019/01/25 14:59:41 product_update.go:21: Product update started
+2019/01/25 15:00:37 config.go:164: Application started in debug environment
+2019/01/25 15:00:37 redis.go:38: Redis cache has been initialized
+2019/01/25 15:00:39 feed_parse.go:26: Starting feed parser
+2019/01/25 15:00:39 product_update.go:21: Product update started
+2019/01/25 15:00:39 product.go:90: 1111111111111
+2019/01/25 15:01:08 config.go:164: Application started in debug environment
+2019/01/25 15:01:08 redis.go:38: Redis cache has been initialized
+2019/01/25 15:01:10 feed_parse.go:26: Starting feed parser
+2019/01/25 15:01:10 product_update.go:21: Product update started
+2019/01/25 15:01:10 product.go:90: 1111111111111 2019-01-25 00:00:00 +0000 UTC 2019-01-24 00:00:00 +0000 UTC
+2019/01/25 15:01:58 config.go:164: Application started in debug environment
+2019/01/25 15:01:58 redis.go:38: Redis cache has been initialized
+2019/01/25 15:01:59 feed_parse.go:26: Starting feed parser
+2019/01/25 15:01:59 product_update.go:21: Product update started
+2019/01/25 15:02:39 config.go:164: Application started in debug environment
+2019/01/25 15:02:39 redis.go:38: Redis cache has been initialized
+2019/01/25 15:02:41 feed_parse.go:26: Starting feed parser
+2019/01/25 15:02:41 product_update.go:21: Product update started
+2019/01/25 15:20:17 config.go:164: Application started in debug environment
+2019/01/25 15:20:17 redis.go:38: Redis cache has been initialized
+2019/01/25 15:20:19 feed_parse.go:26: Starting feed parser
+2019/01/25 15:20:19 product_update.go:21: Product update started
+2019/01/25 15:26:51 config.go:164: Application started in debug environment
+2019/01/25 15:26:51 redis.go:38: Redis cache has been initialized
+2019/01/25 15:26:52 feed_parse.go:26: Starting feed parser
+2019/01/25 15:26:52 product_update.go:21: Product update started
+2019/01/25 15:42:26 config.go:164: Application started in debug environment
+2019/01/25 15:42:26 redis.go:38: Redis cache has been initialized
+2019/01/25 15:42:27 feed_parse.go:26: Starting feed parser
+2019/01/25 15:42:27 product_update.go:21: Product update started
+2019/01/25 15:44:08 config.go:164: Application started in debug environment
+2019/01/25 15:44:08 redis.go:38: Redis cache has been initialized
+2019/01/25 15:44:09 feed_parse.go:26: Starting feed parser
+2019/01/25 15:44:09 product_update.go:21: Product update started
+2019/01/25 15:54:49 config.go:167: Application started in debug environment
+2019/01/25 15:54:49 redis.go:38: Redis cache has been initialized
+2019/01/25 15:54:51 feed_parse.go:26: Starting feed parser
+2019/01/25 15:54:51 product_update.go:21: Product update started
+2019/01/25 15:55:31 config.go:167: Application started in debug environment
+2019/01/25 15:55:31 redis.go:38: Redis cache has been initialized
+2019/01/25 15:55:32 feed_parse.go:26: Starting feed parser
+2019/01/25 15:55:32 product_update.go:21: Product update started
+2019/01/25 15:55:49 config.go:167: Application started in debug environment
+2019/01/25 15:55:49 redis.go:38: Redis cache has been initialized
+2019/01/25 15:55:50 feed_parse.go:26: Starting feed parser
+2019/01/25 15:55:50 product_update.go:21: Product update started
+2019/01/25 15:58:55 config.go:167: Application started in debug environment
+2019/01/25 15:58:55 redis.go:38: Redis cache has been initialized
+2019/01/25 15:58:57 feed_parse.go:26: Starting feed parser
+2019/01/25 15:58:57 product_update.go:21: Product update started
+2019/01/25 16:03:31 config.go:167: Application started in debug environment
+2019/01/25 16:03:31 redis.go:38: Redis cache has been initialized
+2019/01/25 16:03:32 feed_parse.go:26: Starting feed parser
+2019/01/25 16:03:32 product_update.go:21: Product update started
+2019/01/25 16:05:05 config.go:167: Application started in debug environment
+2019/01/25 16:05:05 redis.go:38: Redis cache has been initialized
+2019/01/25 16:05:06 feed_parse.go:26: Starting feed parser
+2019/01/25 16:05:06 product_update.go:21: Product update started
+2019/01/25 16:05:43 config.go:167: Application started in debug environment
+2019/01/25 16:05:43 redis.go:38: Redis cache has been initialized
+2019/01/25 16:05:45 feed_parse.go:26: Starting feed parser
+2019/01/25 16:05:45 product_update.go:21: Product update started
+2019/01/25 16:10:33 config.go:167: Application started in debug environment
+2019/01/25 16:10:33 redis.go:38: Redis cache has been initialized
+2019/01/25 16:10:34 feed_parse.go:26: Starting feed parser
+2019/01/25 16:10:34 product_update.go:21: Product update started
+2019/01/25 16:11:17 config.go:167: Application started in debug environment
+2019/01/25 16:11:17 redis.go:38: Redis cache has been initialized
+2019/01/25 16:11:18 feed_parse.go:26: Starting feed parser
+2019/01/25 16:11:18 product_update.go:21: Product update started
+2019/01/25 16:23:15 config.go:167: Application started in debug environment
+2019/01/25 16:23:15 redis.go:38: Redis cache has been initialized
+2019/01/25 16:23:17 feed_parse.go:26: Starting feed parser
+2019/01/25 16:23:17 product_update.go:21: Product update started
+2019/01/25 16:27:18 config.go:167: Application started in debug environment
+2019/01/25 16:27:18 redis.go:38: Redis cache has been initialized
+2019/01/25 16:27:20 feed_parse.go:26: Starting feed parser
+2019/01/25 16:27:20 product_update.go:21: Product update started
+2019/01/25 16:27:44 config.go:167: Application started in debug environment
+2019/01/25 16:27:44 redis.go:38: Redis cache has been initialized
+2019/01/25 16:27:46 feed_parse.go:26: Starting feed parser
+2019/01/25 16:27:46 product_update.go:21: Product update started
+2019/01/25 16:36:11 config.go:167: Application started in debug environment
+2019/01/25 16:36:11 redis.go:38: Redis cache has been initialized
+2019/01/25 16:36:13 feed_parse.go:26: Starting feed parser
+2019/01/25 16:36:13 product_update.go:21: Product update started
+2019/01/25 16:49:28 config.go:167: Application started in debug environment
+2019/01/25 16:49:28 redis.go:38: Redis cache has been initialized
+2019/01/25 16:49:29 product_update.go:21: Product update started
+2019/01/25 16:49:29 feed_parse.go:26: Starting feed parser
+2019/01/25 17:01:17 config.go:167: Application started in debug environment
+2019/01/25 17:01:17 redis.go:38: Redis cache has been initialized
+2019/01/25 17:01:18 feed_parse.go:26: Starting feed parser
+2019/01/25 17:01:18 product_update.go:21: Product update started
+2019/01/31 16:19:02 config.go:167: Application started in debug environment
+2019/01/31 16:19:02 redis.go:38: Redis cache has been initialized
+2019/01/31 16:19:05 product_update.go:21: Product update started
+2019/01/31 16:40:31 config.go:167: Application started in debug environment
+2019/01/31 16:40:31 redis.go:38: Redis cache has been initialized
+2019/01/31 16:40:33 product_update.go:21: Product update started
+2019/01/31 16:40:55 config.go:167: Application started in debug environment
+2019/01/31 16:40:55 redis.go:38: Redis cache has been initialized
+2019/01/31 16:40:57 product_update.go:21: Product update started
+2019/01/31 16:47:43 config.go:167: Application started in debug environment
+2019/01/31 16:47:43 redis.go:38: Redis cache has been initialized
+2019/01/31 16:47:45 product_update.go:21: Product update started
+2019/02/11 16:51:17 config.go:164: Application started in debug environment
+2019/02/11 16:51:19 redis.go:35: dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it.
+2019/02/11 16:54:02 config.go:164: Application started in debug environment
+2019/02/11 16:54:02 redis.go:38: Redis cache has been initialized
+2019/02/11 16:54:04 product_update.go:21: Product update started
+2019/02/11 17:03:52 config.go:164: Application started in debug environment
+2019/02/11 17:03:52 redis.go:38: Redis cache has been initialized
+2019/02/11 17:03:53 product_update.go:21: Product update started
+2019/02/11 17:06:33 config.go:164: Application started in debug environment
+2019/02/11 17:06:33 redis.go:38: Redis cache has been initialized
+2019/02/11 17:06:34 product_update.go:21: Product update started
+2019/02/11 17:07:10 config.go:164: Application started in debug environment
+2019/02/11 17:07:10 redis.go:38: Redis cache has been initialized
+2019/02/11 17:07:12 product_update.go:21: Product update started

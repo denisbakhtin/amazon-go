@@ -33,7 +33,6 @@
     "select2": "^4.0.6-rc.1",
     "siema": "^1.5.1",
     "style-loader": "^0.23.1",
-    "superagent": "^4.0.0",
     "uglifyjs-webpack-plugin": "^2.1.0",
     "url-loader": "^1.1.2",
     "vue": "^2.5.21",

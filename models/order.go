@@ -1,6 +1,6 @@
-package viewmodels
+package models
 
-//Order stores sorting order info
+//Order is a view model that represents sorting order
 type Order struct {
 	Class string //active or empty
 	Title string //ex: Editorial Rating

@@ -2,6 +2,16 @@
         <div class="clearfix"></div>
         {{template "modal_dialog" .}}
       </div><!--container-fluid-->
+
+      {{if .MenuNodes}}
+        <h6 class="text-center">All Product Categories</h6>
+        <div class="menu-nodes-wrapper">
+          {{range .MenuNodes}}
+            <a class="badge badge-default" href="{{.GetURL}}">{{.Title}} <span class="ml-1 text-muted">{{.ProductCount}}</span></a>
+          {{end}}
+        </div>
+      {{end}}
+
       {{template "footer" .}}
     </body>
   </html>

@@ -11,11 +11,12 @@ import (
 //Page stores info about static web page
 type Page struct {
 	Model
-	Title           string
-	MetaKeywords    string
-	MetaDescription string
-	Body            string
-	Show            bool
+	Title           string `form:"title" binding:"required"`
+	MetaKeywords    string `form:"meta_keywords"`
+	MetaDescription string `form:"meta_description"`
+	Body            string `form:"body"`
+	Show            bool   `form:"show"`
+	Submit          string `gorm:"-" form:"submit" binding:"required"`
 }
 
 //BeforeSave gorm hook

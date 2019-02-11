@@ -2,12 +2,17 @@ package utility
 
 import (
 	"fmt"
+	"log"
+	"math"
 	"net/http"
 	"net/url"
 	"os"
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
+
+	"github.com/gin-gonic/gin"
 
 	"github.com/microcosm-cc/bluemonday"
 )
@@ -56,6 +61,16 @@ type Pagination struct {
 	URL   string
 	Title string
 	Rel   string
+}
+
+//CurrentPage retrieves page number query parameter
+func CurrentPage(c *gin.Context) int {
+	currentPage := 1
+	if pageStr := c.Query("page"); pageStr != "" {
+		currentPage, _ = strconv.Atoi(pageStr)
+	}
+	currentPage = int(math.Max(float64(1), float64(currentPage)))
+	return currentPage
 }
 
 //Paginator creates paginator
@@ -217,7 +232,7 @@ func FileExists(path string) (bool, error) {
 }
 
 //StringSliceContains check if string slice contains needed str
-func StringSliceContains(strs []string, str string) bool {
+func StringSliceContains(str string, strs []string) bool {
 	for i := range strs {
 		if strs[i] == str {
 			return true
@@ -337,31 +352,34 @@ func SplitCamelWords(source string) string {
 	return strings.TrimLeft(re.ReplaceAllString(source, " $1"), " ")
 }
 
-/* //GetCategorySearchList returns category search items (drop down list of categories in the navbar)
-func GetCategorySearchList(catID uint64) []CategorySearchItem {
-	category := Category{}
-	result := make([]CategorySearchItem, 0, 20) //length = 0, capacity = 20, should be fine
-	if catID > 0 {
-		DB.First(&category, catID)
+//DelURLTag removes tag query param from url
+func DelURLTag(amazonURL string) string {
+	eventURL, err := url.Parse(amazonURL)
+	if err != nil {
+		log.Printf("Error parsing feed URL: %s\n", amazonURL)
+		return amazonURL
 	}
-	if category.ID > 0 {
-		for category.ID > 0 {
-			result = append(result, CategorySearchItem{ID: category.ID, Title: category.Title})
-			if category.ParentID == nil {
-				break
-			}
-			category.ID = 0 //otherwise gorm will append category.ID to where clause
-			DB.First(&category, *category.ParentID)
-		}
-		result = append(result, GetCategorySearchList(0)...) //append basic search list
-	} else {
-		//basic search list
-		result = append(result, CategorySearchItem{ID: 0, Title: "All departments", Class: "global"})
-		var categories []Category
-		DB.Where("parent_id is NULL and ID != ?", config.NewArrivalsID).Find(&categories)
-		for i := range categories {
-			result = append(result, CategorySearchItem{ID: categories[i].ID, Title: categories[i].Title})
-		}
-	}
-	return result
-} */
+	//delete credentials
+	queryValues := eventURL.Query()
+	queryValues.Del("tag") //delete tag before requesting page
+	eventURL.RawQuery = queryValues.Encode()
+	return eventURL.String()
+}
+
+//UTCTime converts time t to UTC local time
+func UTCTime(t time.Time) time.Time {
+	_, offset := time.Now().Zone()
+	return t.Add(-time.Duration(offset) * time.Second).UTC()
+}
+
+//AmazonTime converts time t to Amazon.com local time (-4 UTC)
+func AmazonTime(t time.Time) time.Time {
+	_, offset := time.Now().Zone()
+	return t.Add(-time.Duration(offset) * time.Second).Add(-time.Duration(4) * time.Hour).UTC()
+}
+
+//BeginningOfDay returns beginning of the day
+func BeginningOfDay(t time.Time) time.Time {
+	y, m, d := t.Date()
+	return time.Date(y, m, d, 0, 0, 0, 0, t.Location())
+}

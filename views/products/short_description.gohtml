@@ -1,21 +1,337 @@
 {{define "products/short_description"}}
-  <div itemprop="description">
-    <h4>Product features</h4>
-    <div id="features">
+  {{$features := .FeatureSlice}}
+  {{if len $features | lt 0}}
+    <div itemprop="description">
+      <h4>Product features</h4>
       <ul>
-        {{range .FeatureSlice}}
+        {{range $features}}
           <li>{{.}}</li>
         {{end}}
       </ul>
     </div>
+  {{end}}
+  
+  <div class="product-information">
+    <h4>Product Information</h4>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>ASIN</td>
+          <td>{{.Asin}}</td>
+        </tr>
+        {{if NotEmpty .ItemAttributes.PartNumber}}
+          <tr>
+            <td>Part Number</td>
+            <td>{{.ItemAttributes.PartNumber}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.Manufacturer}}
+          <tr>
+            <td>Manufacturer</td>
+            <td>{{.ItemAttributes.Manufacturer}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.Publisher}}
+          <tr>
+            <td>Publisher</td>
+            <td>{{.ItemAttributes.Publisher}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.ItemModel}}
+          <tr>
+            <td>Model number</td>
+            <td>{{.ItemAttributes.ItemModel}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.Director}}
+          <tr>
+            <td>Director</td>
+            <td>{{.ItemAttributes.Director}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.Creator}}
+          <tr>
+            <td>Creators</td>
+            <td>{{.ItemAttributes.Creator}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.Actor}}
+          <tr>
+            <td>Actors</td>
+            <td>{{.ItemAttributes.Actor}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.Color}}
+          <tr>
+            <td>Color</td>
+            <td>{{.ItemAttributes.Color}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.Size}}
+          <tr>
+            <td>Size</td>
+            <td>{{.ItemAttributes.Size}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.ClothingSize}}
+          <tr>
+            <td>Clothing Size</td>
+            <td>{{.ItemAttributes.ClothingSize}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.UPC}}
+          <tr>
+            <td>UPC</td>
+            <td>{{.ItemAttributes.UPC}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.EAN}}
+          <tr>
+            <td>EAN</td>
+            <td>{{.ItemAttributes.EAN}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.EISBN}}
+          <tr>
+            <td>eISBN</td>
+            <td>{{.ItemAttributes.EISBN}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.ISBN}}
+          <tr>
+            <td>ISBN</td>
+            <td>{{.ItemAttributes.ISBN}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.Warranty}}
+          <tr>
+            <td>Warranty</td>
+            <td>{{.ItemAttributes.Warranty}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.OperationSystem}}
+          <tr>
+            <td>Operation System</td>
+            <td>{{.ItemAttributes.OperationSystem}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.HardwarePlatform}}
+          <tr>
+            <td>Hardware Platform</td>
+            <td>{{.ItemAttributes.HardwarePlatform}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.NumberOfDiscs}}
+          <tr>
+            <td>Number Of Discs</td>
+            <td>{{.ItemAttributes.NumberOfDiscs}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.NumberOfIssues}}
+          <tr>
+            <td>Number Of Issues</td>
+            <td>{{.ItemAttributes.NumberOfIssues}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.IssuesPerYear}}
+          <tr>
+            <td>Issues Per Year</td>
+            <td>{{.ItemAttributes.IssuesPerYear}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.Language}}
+          <tr>
+            <td>Language</td>
+            <td>{{.ItemAttributes.Language}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.NumberOfItems}}
+          <tr>
+            <td>Number Of Items</td>
+            <td>{{.ItemAttributes.NumberOfItems}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.NumberOfPages}}
+          <tr>
+            <td>Number Of Pages</td>
+            <td>{{.ItemAttributes.NumberOfPages}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.NumberOfTracks}}
+          <tr>
+            <td>Number Of Tracks</td>
+            <td>{{.ItemAttributes.NumberOfTracks}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.MediaType}}
+          <tr>
+            <td>Media Type</td>
+            <td>{{.ItemAttributes.MediaType}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.LegalDisclaimer}}
+          <tr>
+            <td>Legal Disclaimer</td>
+            <td>{{.ItemAttributes.LegalDisclaimer}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.PublicationDate}}
+          <tr>
+            <td>Publication Date</td>
+            <td>{{ItemDate .ItemAttributes.PublicationDate}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.ReleaseDate}}
+          <tr>
+            <td>Release Date</td>
+            <td>{{ItemDate .ItemAttributes.ReleaseDate}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.Author}}
+          <tr>
+            <td>Author</td>
+            <td>{{.ItemAttributes.Author}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.Artist}}
+          <tr>
+            <td>Artist</td>
+            <td>{{.ItemAttributes.Artist}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.AspectRatio}}
+          <tr>
+            <td>Aspect Ratio</td>
+            <td>{{.ItemAttributes.AspectRatio}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.AudienceRating}}
+          <tr>
+            <td>Audience Rating</td>
+            <td>{{.ItemAttributes.AudienceRating}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.AudioFormat}}
+          <tr>
+            <td>Audio Format</td>
+            <td>{{.ItemAttributes.AudioFormat}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.Edition}}
+          <tr>
+            <td>Edition</td>
+            <td>{{.ItemAttributes.Edition}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.EpisodeSequence}}
+          <tr>
+            <td>Episode Sequence</td>
+            <td>{{.ItemAttributes.EpisodeSequence}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.CEROAgeRating}}
+          <tr>
+            <td>CERO Age Rating</td>
+            <td>{{.ItemAttributes.CEROAgeRating}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.ESRBAgeRating}}
+          <tr>
+            <td>ESRB Age Rating</td>
+            <td>{{.ItemAttributes.ESRBAgeRating}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.Format}}
+          <tr>
+            <td>Format</td>
+            <td>{{.ItemAttributes.Format}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.Genre}}
+          <tr>
+            <td>Genre</td>
+            <td>{{.ItemAttributes.Genre}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.HazardousMaterialType}}
+          <tr>
+            <td>Hazardous Material Type</td>
+            <td>{{.ItemAttributes.HazardousMaterialType}}</td>
+          </tr>
+        {{end}}
+        {{if eq .ItemAttributes.IsAdultProduct "1"}}
+          <tr>
+            <td>Is Adult Product</td>
+            <td>Yes</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.MetalType}}
+          <tr>
+            <td>Metal Type</td>
+            <td>{{.ItemAttributes.MetalType}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.MaterialType}}
+          <tr>
+            <td>Material Type</td>
+            <td>{{.ItemAttributes.MaterialType}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.RunningTime}}
+          <tr>
+            <td>Running Time</td>
+            <td>{{.ItemAttributes.RunningTime}} minutes</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.Length}}
+          <tr>
+            <td>Item Dimensions</td>
+            <td>{{ItemDimensions .ItemAttributes}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.PackageLength}}
+          <tr>
+            <td>Package Dimensions</td>
+            <td>{{PackageDimensions .ItemAttributes}}</td>
+          </tr>
+        {{end}}
+        {{$weight := ItemWeight .ItemAttributes}}
+        {{if NotEmptyDim $weight}}
+          <tr>
+            <td>Item Weight</td>
+            <td>{{$weight}}</td>
+          </tr>
+        {{end}}
+        {{$packageWeight := PackageWeight .ItemAttributes}}
+        {{if NotEmptyDim $packageWeight}}
+          <tr>
+            <td>Package Weight</td>
+            <td>{{$packageWeight}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.ManufacturerMinimumAge}}
+          <tr>
+            <td>Manufacturer Recommended Age</td>
+            <td>{{ManufacturerRecommendedAge .ItemAttributes}}</td>
+          </tr>
+        {{end}}
+        {{if NotEmpty .ItemAttributes.PictureFormat}}
+          <tr>
+            <td>Picture Format</td>
+            <td>{{.ItemAttributes.PictureFormat}}</td>
+          </tr>
+        {{end}}
+        <tr>
+          <td>Condition</td>
+          <td><link itemprop="itemCondition" href="http://schema.org/NewCondition"><span class="strong"> NEW!</span></td>
+        </tr>
+        {{if .ID}}
+          <tr>
+            <td>Availability</td>
+            <td>In Stock {{if len .AvailabilityNote | lt 0}}. {{.AvailabilityNote}}.{{end}}</td>
+          </tr>
+        {{end}}
+      </tbody>
+    </table>
   </div>
-  <ul>
-    <li>Condition: 
-      <link itemprop="itemCondition" href="http://schema.org/NewCondition">
-      <span class="strong"> NEW!</span>
-    </li>
-    {{if .ID}}
-      <li>In Stock.</li>
-    {{end}}
-  </ul>
 {{end}}

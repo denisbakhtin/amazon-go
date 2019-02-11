@@ -1,7 +1,6 @@
 {{define "sidebar_shipping"}}
     <div class="sidebar-shipping mx-2">
-        <input type="checkbox" name="free_shipping" id="free_shipping" value="1" />
+        <input type="checkbox" name="free_shipping" id="free_shipping" value="1" {{if .Context.Query "free_shipping" | eq "1"}}checked{{end}} onchange="this.form.submit();" />
         <label for="free_shipping" class="ml-2">Free Shipping</label>
-        International Shipping??? (Check aws)
     </div>
 {{end}}

@@ -1,8 +1,8 @@
 {{define "products/product_tags"}}
-	{{if .ID}}
-		<a href="{{.GetURL}}" class="badge badge-pill badge-primary">{{.Title}}</a>
-	{{end}}
 	{{if .Parent}}
 		{{template "products/product_tags" .Parent}}
+	{{end}}
+	{{if .ID}}
+		<a href="{{.GetURL}}" class="badge badge-pill badge-primary">{{.Title}}</a>
 	{{end}}
 {{end}}

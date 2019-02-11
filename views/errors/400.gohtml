@@ -1,15 +1,17 @@
 {{define "errors/400"}}
   {{template "page_top" .}}
 
-  <h1 class="text-center">
-    <i class="far fa-meh-blank"></i> <br/>
-    400 Error <br/>
-  </h1>
-  <h3 class="text-center">Bad request</h3>
-  <p class="text-center">Your client has issued a malformed or illegal request. <br/>
-  Go back, or head over to <a href="/">Home page</a> to choose a new direction.</p>
-  
-  <p class="text-center text-danger">{{.Error}}</p>
+  <div class="error-page">
+    <h1 class="text-center">
+      <i class="far fa-frown"></i> <br/>
+      400 Error <br/>
+    </h1>
+    <h3 class="text-center">Bad request</h3>
+    <p class="text-center">Your client has issued a malformed or illegal request. <br/>
+    Go back, or head over to <a href="/">Home page</a> to choose a new direction.</p>
+    
+    <p class="text-center text-danger">{{.Error}}</p>
+  </div>
 
   {{template "page_bottom" .}}
 {{end}}

@@ -1,12 +1,13 @@
 {{define "sidebar_tags"}}
-    {{if .SidebarTags}}
-        <h4>Tags</h4>
-        <div id="sidebar-tag-wrapper">
-            <ul class="nav nav-pills nav-stacked" id="sidebar-tag">
-                {{range .SidebarTags}}
-                    {{template "sidebar_scale_item" .}}
-                {{end}}
-            </ul>
+    <div class="sidebar-tag my-4 mx-2">
+        <h5>Tags</h5>
+        <div class="sidebar-tag-content">
+            {{range .SidebarTags}}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="tag[]" id="tag_{{.ID}}" value="{{.ID}}" {{if $.Context.QueryArray "tag[]" | StringSliceContains .IDStr}}checked{{end}} onchange="this.form.submit();">
+                    <label class="form-check-label text-truncate" for="tag_{{.ID}}">{{.Title}}</label>
+                </div>
+            {{end}}
         </div>
-    {{end}}
+    </div>
 {{end}}

@@ -11,7 +11,6 @@ type Variation struct {
 	Asin             string
 	Title            string
 	Available        bool
-	Feature          string
 	RegularPrice     float64
 	SpecialPrice     float64
 	Currency         string
@@ -34,6 +33,7 @@ type Variation struct {
 	Dim5Value        string
 	CategoryID       uint64 `gorm:"index:variation_category_idx"`
 	Category         Category
+	ItemAttributes   ItemAttributes
 }
 
 //MainImage returns variation's main image
@@ -67,8 +67,8 @@ func (v Variation) ImageSlice() []string {
 
 //FeatureSlice returns the feature slice for product view
 func (v Variation) FeatureSlice() (features []string) {
-	if len(v.Feature) > 0 {
-		features = strings.Split(v.Feature, "<br/>")
+	if len(v.ItemAttributes.Feature) > 0 {
+		features = strings.Split(v.ItemAttributes.Feature, "<br/>")
 	}
 	return
 }

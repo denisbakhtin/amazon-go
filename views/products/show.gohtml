@@ -3,19 +3,15 @@
 	{{template "breadcrumbs" .Product}}
 	{{$variation := .Product.PromoVariation}}
 	<div class="product-view" itemscope="" itemtype="http://schema.org/Product">
-	  <div class="product-essential row">
-	    <div class="product-image-box col-sm-12 col-md-4">
+	  <div class="product-essential">
+	    <div class="product-image-box">
 	      {{template "products/product_images" $variation}}
 			</div>
 
-	    <div class="product-shop col-sm-12 col-md-8">
+	    <div class="product-shop">
 	      <h1 class="product-name"><span itemprop="name">{{.Title}}</span></h1>
 
-	      {{with .Product}}
-	      	{{template "products/star_rating" .}}
-	      {{end}}
-				
-				<div class="offerdetails">
+	      <div class="offerdetails">
 					{{template "products/offer_details" $variation}}
 				</div>
 				{{if not $variation}}
@@ -31,7 +27,7 @@
 							<a class="nav-link active" id="v-select-tab" data-toggle="tab" href="#v-select-tabdata" role="tab" aria-controls="v-select-tabdata" aria-selected="true">Select Variation</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" id="v-table-tab" data-toggle="tab" href="#v-table-tabdata" role="tab" aria-controls="v-table-tabdata" aria-selected="false">List All Variations</a>
+							<a class="nav-link" id="v-table-tab" data-toggle="tab" href="#v-table-tabdata" role="tab" aria-controls="v-table-tabdata" aria-selected="false">All Variations</a>
 						</li>
 					</ul>
 					<div class="tab-content" id="variations-tabdata">
@@ -43,25 +39,27 @@
 						</div>
 					</div>
 		    {{end}}
-	      <div class="clearfix"></div>
 				{{if $variation}}
-					<p class="text-muted">Prices and availability are accurate as of {{printf "%v" .UpdatedAt}}.</p>
+					<p class="text-muted">Prices and availability are accurate as of {{UTCTime $variation.UpdatedAt}}.</p>
 				{{end}}
 
-	      <div class="short-description">
-	        {{template "products/short_description" $variation}}
+				<div class="short-description">
+					{{template "products/short_description" $variation}}
 				</div>
 			</div>
 		</div>
 	  <div class="clearfix"></div>
 
 	  <div class="product-collateral">
-			<div class="product-tags">
+			<div class="product-tags mb-2">
 				<h4>Tags</h4>
 				{{template "products/product_tags" $.Product.BrowseNode}}
+				{{if $.Product.Binding.ID | lt 0}}
+					<a href="{{$.Product.Binding.GetURL}}" class="badge badge-pill badge-success">{{$.Product.Binding.Title}}</a>
+				{{end}}
 			</div>
 
-	  	{{if true}}
+	  	{{if NotEmpty .Product.Content}}
 	      <h4>Description</h4>
 	    	{{NoEscape .Product.Content}}
 	    {{end}}
@@ -74,12 +72,15 @@
 	</div>
 
 	{{$countBrand := .Product.CountWithSameBrand}}
-	{{if gt $countBrand 0}}
+	{{if gt $countBrand 1}}
 		<h3>Other {{.Product.Brand.Title}} Items</h3>
-		<div class="branded-products row">
-			{{range .Product.WithSameBrand 3}}
+		<div class="branded-products row align-items-stretch">
+			{{range .Product.WithSameBrand 4}}
 				{{template "products/preview" .}}
 			{{end}}
+		</div>
+		<div class="text-center my-2">
+			<a href="{{.Product.Brand.GetURL}}" class="text-dark text-underline text-hover-normal font-size-130">See More <small class="text-muted">({{$countBrand}})</small></a>
 		</div>
 	{{end}}
 
@@ -93,6 +94,10 @@
 			</div>
 		</div>
 	{{end}}
+
+	<div class="text-center my-2">
+		<a href="{{.Product.BrowseNode.GetURL}}" class="text-dark text-underline text-hover-normal font-size-130">All {{.Product.BrowseNode.Title}} <small class="text-muted">({{.Product.BrowseNode.ProductCount}})</small></a>
+	</div>
 
 	{{template "breadcrumbs" .Product}}
 	{{template "page_bottom" .}}

@@ -2,6 +2,8 @@ package controllers
 
 import (
 	"encoding/json"
+	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/denisbakhtin/amazon-go/aws"
@@ -17,6 +19,7 @@ func CartGet(c *gin.Context) {
 	apiRes := &aws.CartResponse{}
 	if session.Get("cart_id") != nil && session.Get("cart_hmac") != nil && session.Get("cart_json") != nil {
 		if err := json.Unmarshal([]byte(session.Get("cart_json").(string)), apiRes); err != nil {
+			log.Println(err)
 			ShowErrorPage(c, 500, err)
 			return
 		}
@@ -56,6 +59,7 @@ func CartAdd(c *gin.Context) {
 
 	models.DB.First(&variation, id)
 	if variation.ID == 0 {
+		log.Println(fmt.Errorf("Variation ID == 0, can't proceed"))
 		ShowErrorPage(c, 400, nil)
 		return
 	}
@@ -65,6 +69,7 @@ func CartAdd(c *gin.Context) {
 		//cart create request
 		apiRes, err = aws.CartCreate(variation.Asin)
 		if err != nil {
+			log.Println(err)
 			ShowErrorPage(c, 500, err)
 			return
 		}
@@ -72,6 +77,7 @@ func CartAdd(c *gin.Context) {
 		//cart add or modify request
 		err = json.Unmarshal([]byte(session.Get("cart_json").(string)), apiRes)
 		if err != nil {
+			log.Println(err)
 			ShowErrorPage(c, 500, err)
 			return
 		}
@@ -81,17 +87,15 @@ func CartAdd(c *gin.Context) {
 			apiRes, err = aws.CartAdd(session.Get("cart_id").(string), session.Get("cart_hmac").(string), variation.Asin, 1, apiRes)
 		}
 		if err != nil {
-			//get previous cart state
-			err = json.Unmarshal([]byte(session.Get("cart_json").(string)), apiRes)
-			if err != nil {
-				ShowErrorPage(c, 500, err)
-				return
-			}
+			log.Println(err)
+			ShowErrorPage(c, 500, err)
+			return
 		}
 	}
 
 	s, err := json.Marshal(*apiRes)
 	if err != nil {
+		log.Println(err)
 		ShowErrorPage(c, 500, err)
 		return
 	}
@@ -107,6 +111,7 @@ func CartAdd(c *gin.Context) {
 func CartAddJSONPost(c *gin.Context) {
 	cartItem := aws.CartItemForm{}
 	if err := c.ShouldBindJSON(&cartItem); err != nil {
+		log.Println(err)
 		c.JSON(400, gin.H{"error": err.Error()})
 		return
 	}
@@ -119,6 +124,7 @@ func CartAddJSONPost(c *gin.Context) {
 		//cart create request
 		apiRes, err = aws.CartCreate(cartItem.Asin)
 		if err != nil {
+			log.Println(err)
 			c.JSON(500, gin.H{"error": err.Error()})
 			return
 		}
@@ -126,6 +132,7 @@ func CartAddJSONPost(c *gin.Context) {
 		//cart add or modify request
 		err = json.Unmarshal([]byte(session.Get("cart_json").(string)), apiRes)
 		if err != nil {
+			log.Println(err)
 			c.JSON(500, gin.H{"error": err.Error()})
 			return
 		}
@@ -138,6 +145,7 @@ func CartAddJSONPost(c *gin.Context) {
 			//get previous cart state
 			err = json.Unmarshal([]byte(session.Get("cart_json").(string)), apiRes)
 			if err != nil {
+				log.Println(err)
 				c.JSON(500, gin.H{"error": err.Error()})
 				return
 			}
@@ -146,6 +154,7 @@ func CartAddJSONPost(c *gin.Context) {
 
 	s, err := json.Marshal(*apiRes)
 	if err != nil {
+		log.Println(err)
 		c.JSON(500, gin.H{"error": err.Error()})
 		return
 	}
@@ -162,12 +171,14 @@ func CartAddJSONPost(c *gin.Context) {
 func CartUpdatePost(c *gin.Context) {
 	cartItem := aws.CartItemForm{}
 	if err := c.ShouldBind(&cartItem); err != nil {
+		log.Println(err)
 		c.HTML(400, "errors/400", gin.H{"Error": err.Error()})
 		return
 	}
 
 	session := sessions.Default(c)
 	if session.Get("cart_id") == nil || session.Get("cart_hmac") == nil || session.Get("cart_id") == "" || session.Get("cart_hmac") == "" || session.Get("cart_json") == nil || session.Get("cart_json") == "" {
+		log.Println("Cart has not been initialized")
 		c.HTML(500, "errors/500", gin.H{"Error": "Cart has not been initialized"})
 		return
 	}
@@ -175,6 +186,7 @@ func CartUpdatePost(c *gin.Context) {
 	var err error
 
 	if err := json.Unmarshal([]byte(session.Get("cart_json").(string)), apiRes); err != nil {
+		log.Println(err)
 		c.HTML(500, "errors/500", gin.H{"Error": err.Error()})
 		return
 	}
@@ -184,6 +196,7 @@ func CartUpdatePost(c *gin.Context) {
 	} else {
 		s, err := json.Marshal(*apiRes)
 		if err != nil {
+			log.Println(err)
 			c.HTML(500, "errors/500", gin.H{"Error": err.Error()})
 			return
 		}
@@ -203,6 +216,7 @@ func CartCheckoutGet(c *gin.Context) {
 	if session.Get("cart_id") != nil && session.Get("cart_hmac") != nil && session.Get("cart_json") != nil {
 
 		if err := json.Unmarshal([]byte(session.Get("cart_json").(string)), apiRes); err != nil {
+			log.Println(err)
 			c.HTML(500, "errors/500", gin.H{"Error": err.Error()})
 			return
 		}

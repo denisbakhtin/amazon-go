@@ -18,13 +18,14 @@
 	<script>
 		//switch images in product view
 		$('.product-essential .more-views .image-panel:first').addClass('active');
-		$('.product-essential .more-views').on('click', '.image-panel', function () {
+		$('.product-essential .more-views').on('click', '.image-panel', setActiveImage);
+		function setActiveImage() {
 			$('.product-essential .more-views .image-panel').removeClass('active');
 			$(this).addClass('active');
 			var img = $(this).find("img");
 			$(".product-essential #current-image-box > img").fadeOut(400, function () {
 			$('.product-essential #current-image-box > img').attr("src", img.attr("src"));
 			}).fadeIn(400);
-		});
+		}
 	</script>
 {{end}}
