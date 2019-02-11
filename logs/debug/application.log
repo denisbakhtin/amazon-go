@@ -356,3 +356,6 @@
 2019/02/11 17:07:10 config.go:164: Application started in debug environment
 2019/02/11 17:07:10 redis.go:38: Redis cache has been initialized
 2019/02/11 17:07:12 product_update.go:21: Product update started
+2019/02/11 19:29:25 config.go:164: Application started in debug environment
+2019/02/11 19:29:25 redis.go:38: Redis cache has been initialized
+2019/02/11 19:29:26 product_update.go:21: Product update started
