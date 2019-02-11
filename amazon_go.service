@@ -1,0 +1,16 @@
+[Unit]
+Description=Amazon Discount Web Server
+After=network.target
+After=postgresql.service
+
+[Service]
+User=tabula
+WorkingDirectory=/home/tabula/go/src/github.com/denisbakhtin/amazon-go
+ExecStart=/home/tabula/go/src/github.com/denisbakhtin/amazon-go/amazon-go -e=release
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

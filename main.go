@@ -51,10 +51,10 @@ func main() {
 
 		//launch tasks in at the start of application in release mode
 		go models.InitializeCache()
-		go aws.RssParse()
+		//go aws.RssParse()
 		go aws.FeedParse()
 		go aws.ProductUpdate()
-		go aws.SpecificationUpdate()
+		//go aws.SpecificationUpdate()
 	}
 
 	//------------------------- run web server ---------------------------
