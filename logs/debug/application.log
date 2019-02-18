@@ -362,3 +362,253 @@
 2019/02/12 14:12:19 config.go:164: Application started in debug environment
 2019/02/12 14:12:19 redis.go:38: Redis cache has been initialized
 2019/02/12 14:12:21 product_update.go:21: Product update started
+2019/02/18 17:16:24 config.go:164: Application started in debug environment
+2019/02/18 17:16:26 redis.go:35: dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it.
+2019/02/18 17:16:42 config.go:164: Application started in debug environment
+2019/02/18 17:16:44 redis.go:35: dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it.
+2019/02/18 17:16:52 config.go:164: Application started in debug environment
+2019/02/18 17:16:52 redis.go:38: Redis cache has been initialized
+2019/02/18 17:16:54 product_update.go:21: Product update started
+2019/02/18 17:17:53 config.go:164: Application started in debug environment
+2019/02/18 17:17:53 redis.go:38: Redis cache has been initialized
+2019/02/18 17:17:55 product_update.go:21: Product update started
+2019/02/18 17:17:56 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:17:57 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:17:59 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:01 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:02 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:04 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:06 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:08 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:09 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:11 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:13 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:15 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:17 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:19 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:21 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:23 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:25 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:27 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:29 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:31 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:33 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:35 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:37 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:39 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:41 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:43 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:44 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:46 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:48 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:50 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:52 config.go:164: Application started in debug environment
+2019/02/18 17:18:52 redis.go:38: Redis cache has been initialized
+2019/02/18 17:18:53 product_update.go:21: Product update started
+2019/02/18 17:18:54 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:54 product_update.go:70: 111
+2019/02/18 17:18:56 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:56 product_update.go:70: 111
+2019/02/18 17:18:57 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:57 product_update.go:70: 111
+2019/02/18 17:18:59 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:18:59 product_update.go:70: 111
+2019/02/18 17:19:01 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:19:01 product_update.go:70: 111
+2019/02/18 17:19:03 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:19:03 product_update.go:70: 111
+2019/02/18 17:19:05 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:19:05 product_update.go:70: 111
+2019/02/18 17:19:07 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:19:07 product_update.go:70: 111
+2019/02/18 17:19:08 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:19:08 product_update.go:70: 111
+2019/02/18 17:19:10 config.go:164: Application started in debug environment
+2019/02/18 17:19:10 redis.go:38: Redis cache has been initialized
+2019/02/18 17:19:11 product_update.go:21: Product update started
+2019/02/18 17:19:12 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:19:12 product_update.go:70: 111
+2019/02/18 17:19:12 product_update.go:72: 222
+2019/02/18 17:19:14 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:19:14 product_update.go:70: 111
+2019/02/18 17:19:14 product_update.go:72: 222
+2019/02/18 17:19:16 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:19:16 product_update.go:70: 111
+2019/02/18 17:19:16 product_update.go:72: 222
+2019/02/18 17:19:18 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:19:18 product_update.go:70: 111
+2019/02/18 17:19:18 product_update.go:72: 222
+2019/02/18 17:19:20 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:19:20 product_update.go:70: 111
+2019/02/18 17:19:20 product_update.go:72: 222
+2019/02/18 17:19:22 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:19:22 product_update.go:70: 111
+2019/02/18 17:19:22 product_update.go:72: 222
+2019/02/18 17:19:24 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:19:24 product_update.go:70: 111
+2019/02/18 17:19:24 product_update.go:72: 222
+2019/02/18 17:19:25 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:19:25 product_update.go:70: 111
+2019/02/18 17:19:25 product_update.go:72: 222
+2019/02/18 17:19:27 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:19:27 product_update.go:70: 111
+2019/02/18 17:19:27 product_update.go:72: 222
+2019/02/18 17:19:29 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:19:29 product_update.go:70: 111
+2019/02/18 17:19:29 product_update.go:72: 222
+2019/02/18 17:19:31 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:19:31 product_update.go:70: 111
+2019/02/18 17:19:31 product_update.go:72: 222
+2019/02/18 17:19:33 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:19:33 product_update.go:70: 111
+2019/02/18 17:19:33 product_update.go:72: 222
+2019/02/18 17:25:37 config.go:164: Application started in debug environment
+2019/02/18 17:25:37 redis.go:38: Redis cache has been initialized
+2019/02/18 17:25:38 product_update.go:21: Product update started
+2019/02/18 17:25:53 config.go:164: Application started in debug environment
+2019/02/18 17:25:53 redis.go:38: Redis cache has been initialized
+2019/02/18 17:25:54 product_update.go:21: Product update started
+2019/02/18 17:25:55 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:25:55 product_update.go:70: 111
+2019/02/18 17:25:55 product_update.go:72: 222
+2019/02/18 17:25:57 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:25:57 product_update.go:70: 111
+2019/02/18 17:25:57 product_update.go:72: 222
+2019/02/18 17:25:58 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:25:58 product_update.go:70: 111
+2019/02/18 17:25:58 product_update.go:72: 222
+2019/02/18 17:26:00 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:26:00 product_update.go:70: 111
+2019/02/18 17:26:00 product_update.go:72: 222
+2019/02/18 17:26:02 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:26:02 product_update.go:70: 111
+2019/02/18 17:26:02 product_update.go:72: 222
+2019/02/18 17:26:04 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:26:04 product_update.go:70: 111
+2019/02/18 17:26:04 product_update.go:72: 222
+2019/02/18 17:26:05 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:26:05 product_update.go:70: 111
+2019/02/18 17:26:05 product_update.go:72: 222
+2019/02/18 17:26:07 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:26:07 product_update.go:70: 111
+2019/02/18 17:26:07 product_update.go:72: 222
+2019/02/18 17:26:09 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:26:09 product_update.go:70: 111
+2019/02/18 17:26:09 product_update.go:72: 222
+2019/02/18 17:26:11 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:26:11 product_update.go:70: 111
+2019/02/18 17:26:11 product_update.go:72: 222
+2019/02/18 17:26:12 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:26:12 product_update.go:70: 111
+2019/02/18 17:26:12 product_update.go:72: 222
+2019/02/18 17:26:14 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:26:14 product_update.go:70: 111
+2019/02/18 17:26:14 product_update.go:72: 222
+2019/02/18 17:26:16 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:26:16 product_update.go:70: 111
+2019/02/18 17:26:16 product_update.go:72: 222
+2019/02/18 17:26:17 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:26:17 product_update.go:70: 111
+2019/02/18 17:26:17 product_update.go:72: 222
+2019/02/18 17:26:19 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:26:19 product_update.go:70: 111
+2019/02/18 17:26:19 product_update.go:72: 222
+2019/02/18 17:26:21 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:26:21 product_update.go:70: 111
+2019/02/18 17:26:21 product_update.go:72: 222
+2019/02/18 17:26:23 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:26:23 product_update.go:70: 111
+2019/02/18 17:26:23 product_update.go:72: 222
+2019/02/18 17:26:24 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:26:24 product_update.go:70: 111
+2019/02/18 17:26:24 product_update.go:72: 222
+2019/02/18 17:26:26 config.go:164: Application started in debug environment
+2019/02/18 17:26:26 redis.go:38: Redis cache has been initialized
+2019/02/18 17:26:28 product_update.go:21: Product update started
+2019/02/18 17:26:28 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:26:28 product_update.go:70: 111
+2019/02/18 17:26:28 product_update.go:72: 222
+2019/02/18 17:26:33 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:26:33 product_update.go:70: 111
+2019/02/18 17:26:33 product_update.go:72: 222
+2019/02/18 17:26:38 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:26:38 product_update.go:70: 111
+2019/02/18 17:26:38 product_update.go:72: 222
+2019/02/18 17:26:44 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:26:44 product_update.go:70: 111
+2019/02/18 17:26:44 product_update.go:72: 222
+2019/02/18 17:26:49 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:26:49 product_update.go:70: 111
+2019/02/18 17:26:49 product_update.go:72: 222
+2019/02/18 17:26:54 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:26:54 product_update.go:70: 111
+2019/02/18 17:26:54 product_update.go:72: 222
+2019/02/18 17:26:59 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:26:59 product_update.go:70: 111
+2019/02/18 17:26:59 product_update.go:72: 222
+2019/02/18 17:27:04 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:27:04 product_update.go:70: 111
+2019/02/18 17:27:04 product_update.go:72: 222
+2019/02/18 17:27:10 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:27:10 product_update.go:70: 111
+2019/02/18 17:27:10 product_update.go:72: 222
+2019/02/18 17:27:15 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:27:15 product_update.go:70: 111
+2019/02/18 17:27:15 product_update.go:72: 222
+2019/02/18 17:27:20 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:27:20 product_update.go:70: 111
+2019/02/18 17:27:20 product_update.go:72: 222
+2019/02/18 17:27:25 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:27:25 product_update.go:70: 111
+2019/02/18 17:27:25 product_update.go:72: 222
+2019/02/18 17:27:30 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:27:30 product_update.go:70: 111
+2019/02/18 17:27:30 product_update.go:72: 222
+2019/02/18 17:27:36 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:27:36 product_update.go:70: 111
+2019/02/18 17:27:36 product_update.go:72: 222
+2019/02/18 17:27:41 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:27:41 product_update.go:70: 111
+2019/02/18 17:27:41 product_update.go:72: 222
+2019/02/18 17:27:46 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:27:46 product_update.go:70: 111
+2019/02/18 17:27:46 product_update.go:72: 222
+2019/02/18 17:27:51 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:27:51 product_update.go:70: 111
+2019/02/18 17:27:51 product_update.go:72: 222
+2019/02/18 17:27:56 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:27:56 product_update.go:70: 111
+2019/02/18 17:27:56 product_update.go:72: 222
+2019/02/18 17:28:02 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:28:02 product_update.go:70: 111
+2019/02/18 17:28:02 product_update.go:72: 222
+2019/02/18 17:28:02 config.go:164: Application started in debug environment
+2019/02/18 17:28:02 redis.go:38: Redis cache has been initialized
+2019/02/18 17:28:03 product_update.go:21: Product update started
+2019/02/18 17:28:04 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:28:04 product_update.go:70: 111
+2019/02/18 17:28:04 product_update.go:72: 222
+2019/02/18 17:28:09 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:28:09 product_update.go:70: 111
+2019/02/18 17:28:09 product_update.go:72: 222
+2019/02/18 17:28:15 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:28:15 product_update.go:70: 111
+2019/02/18 17:28:15 product_update.go:72: 222
+2019/02/18 17:28:20 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:28:20 product_update.go:70: 111
+2019/02/18 17:28:20 product_update.go:72: 222
+2019/02/18 17:28:25 config.go:164: Application started in debug environment
+2019/02/18 17:28:25 redis.go:38: Redis cache has been initialized
+2019/02/18 17:28:26 product_update.go:21: Product update started
+2019/02/18 17:28:26 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:28:32 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:28:32 config.go:164: Application started in debug environment
+2019/02/18 17:28:32 redis.go:38: Redis cache has been initialized
+2019/02/18 17:28:34 product_update.go:21: Product update started
+2019/02/18 17:28:34 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:28:40 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:28:45 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:28:50 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:28:55 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:29:01 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
+2019/02/18 17:29:06 product_update.go:65: ItemLookup error:  503: 503 Service Unavailable
