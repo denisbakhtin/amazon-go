@@ -78,7 +78,7 @@ func Create() error {
 	baseURL := config.SiteURL
 	items := make([]item, 0, 100000)
 	var nodes []models.BrowseNode
-	models.DB.Find(&nodes)
+	models.DB.Where("product_count > 0").Find(&nodes)
 	for i := range nodes {
 		items = append(items, item{Loc: baseURL + nodes[i].GetURL(), LastMod: nodes[i].UpdatedAt, ChangeFreq: "daily", Priority: 0.5})
 	}

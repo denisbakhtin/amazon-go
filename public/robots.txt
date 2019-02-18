@@ -4,5 +4,5 @@ Disallow: /cart_items
 Disallow: /categories/71-new-arrivals
 Disallow: /*?order=
 
-Sitemap: http://www.marketplaza.biz/system/sitemap.xml.gz
+Sitemap: http://www.marketplaza.biz/public/system/sitemap.xml.gz
 Host: www.marketplaza.biz

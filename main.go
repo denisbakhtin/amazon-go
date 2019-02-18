@@ -21,23 +21,13 @@ func main() {
 	models.InitDatabase() //default settings will be used
 
 	//------------------------- service tasks ---------------------------
-	//go aws.DealsParse()
-	//go aws.RssParse()
-	//go aws.FeedParse()
-	go func() {
-		//aws.ClearProcessedAsins()
-		//aws.QueueAvailableAsins()
-		//aws.QueueUnavailableAsins()
-		aws.ProductUpdate()
-	}()
 
 	if config.IsRelease() {
 		//------------------------- scheduled tasks --------------------------
 		//TODO: later move these tasks to system cron, to make it more stable and independent of app uptime
 		c := cron.New()
 		c.AddFunc("0 0 0 * * *", func() {
-			err := sitemap.Create()
-			if err != nil {
+			if err := sitemap.Create(); err != nil {
 				log.Println(err)
 			}
 		}) //every day
@@ -51,10 +41,21 @@ func main() {
 
 		//launch tasks in at the start of application in release mode
 		go models.InitializeCache()
+		go sitemap.Create()
 		//go aws.RssParse()
 		go aws.FeedParse()
 		go aws.ProductUpdate()
 		//go aws.SpecificationUpdate()
+	} else {
+		//go aws.DealsParse()
+		//go aws.RssParse()
+		//go aws.FeedParse()
+		go func() {
+			//aws.ClearProcessedAsins()
+			//aws.QueueAvailableAsins()
+			//aws.QueueUnavailableAsins()
+			aws.ProductUpdate()
+		}()
 	}
 
 	//------------------------- run web server ---------------------------
